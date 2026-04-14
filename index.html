@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="와플러스 - K-뷰티 특화 AI 퍼포먼스 에이전시. 10년+ 디지털 퍼포먼스 경험과 AI 마케팅 자동화 플랫폼 DIGO™로 분명한 성과를 만듭니다.">
+<title>WAPLUS | AI Performance Digital Agency</title>
+
+<!-- Pretendard Font -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+
+<style>
+/* ============================================================
+   WAPLUS — Premium Redesign
+   Designer: AI Creative Director
+   Version: 2.0
+   ============================================================ */
+
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Color System */
+  --c-bg:          #080B14;
+  --c-bg-2:        #0C1020;
+  --c-bg-3:        #111827;
+  --c-surface:     rgba(255,255,255,0.04);
+  --c-surface-2:   rgba(255,255,255,0.07);
+  --c-border:      rgba(255,255,255,0.08);
+  --c-border-2:    rgba(255,255,255,0.14);
+
+  /* Brand Colors */
+  --c-primary:     #7C5CFC;
+  --c-primary-2:   #9B7FFF;
+  --c-accent:      #00D4FF;
+  --c-accent-2:    #00F5A0;
+  --c-gold:        #F5C842;
+  --c-danger:      #FF4D6D;
+
+  /* Text */
+  --c-text-1:      #FFFFFF;
+  --c-text-2:      rgba(255,255,255,0.72);
+  --c-text-3:      rgba(255,255,255,0.44);
+  --c-text-4:      rgba(255,255,255,0.28);
+
+  /* Gradients */
+  --g-primary:     linear-gradient(135deg, #7C5CFC 0%, #00D4FF 100%);
+  --g-hero:        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,92,252,0.35) 0%, transparent 70%);
+  --g-card:        linear-gradient(135deg, rgba(124,92,252,0.12) 0%, rgba(0,212,255,0.06) 100%);
+  --g-gold:        linear-gradient(135deg, #F5C842 0%, #FF8C42 100%);
+
+  /* Spacing */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  /* Typography */
+  --font-base: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Radius */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  20px;
+  --r-xl:  28px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md:  0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg:  0 24px 64px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 40px rgba(124,92,252,0.3);
+  --shadow-glow-accent: 0 0 40px rgba(0,212,255,0.25);
+
+  /* Transitions */
+  --t-fast:   0.15s cubic-bezier(0.4,0,0.2,1);
+  --t-base:   0.3s cubic-bezier(0.4,0,0.2,1);
+  --t-slow:   0.6s cubic-bezier(0.4,0,0.2,1);
+  --t-spring: 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--c-bg);
+  color: var(--c-text-1);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-primary); border-radius: var(--r-full); }
+
+/* ── Selection ─────────────────────────────────────────────── */
+::selection { background: rgba(124,92,252,0.35); color: #fff; }
+
+/* ── Utility ───────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-primary-2);
+  margin-bottom: var(--space-md);
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--g-primary);
+  border-radius: var(--r-full);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--c-text-1);
+  margin-bottom: var(--space-md);
+}
+
+.section-title em {
+  font-style: normal;
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-desc {
+  font-size: 1.0625rem;
+  color: var(--c-text-2);
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+/* Gradient Text */
+.grad-text {
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-gold {
+  background: var(--g-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fade-in animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+  will-change: opacity, transform;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.4s; }
+.fade-up.delay-5 { transition-delay: 0.5s; }
+.fade-up.delay-6 { transition-delay: 0.6s; }
+
+/* ── Noise Texture Overlay ─────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0;
+  transition: all var(--t-base);
+}
+
+#nav.scrolled {
+  background: rgba(8,11,20,0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--c-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 var(--space-lg);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-mark {
+  width: 38px;
+  height: 38px;
+  background: var(--g-primary);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  box-shadow: 0 4px 16px rgba(124,92,252,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-logo-mark::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nav-logo-text .name {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--c-text-1);
+}
+
+.nav-logo-text .tagline {
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--c-text-3);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Nav Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--c-text-2);
+  text-decoration: none;
+  border-radius: var(--r-full);
+  transition: all var(--t-fast);
+  letter-spacing: 0.01em;
+}
+
+.nav-menu a:hover {
+  color: var(--c-text-1);
+  background: var(--c-surface-2);
+}
+
+.nav-menu a.active {
+  color: var(--c-primary-2);
+}
+
+/* Nav CTA */
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--r-full);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--t-base);
+  border: none;
+  outline: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--c-text-2);
+  border: 1px solid var(--c-border-2);
+}
+
+.btn-ghost:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text-1);
+  border-color: rgba(255,255,255,0.24);
+}
+
+.btn-primary {
+  background: var(--g-primary);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(124,92,252,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--t-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124,92,252,0.55);
+}
+
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--c-text-1);
+  border: 1px solid var(--c-border-2);
+}
+
+.btn-outline:hover {
+  background: var(--c-surface-2);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--r-sm);
+  background: none;
+  border: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--c-text-2);
+  border-radius: var(--r-full);
+  transition: all var(--t-base);
+}
+
+/* Mobile Nav */
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(8,11,20,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--c-border);
+  padding: var(--space-md) var(--space-lg);
+  z-index: 999;
+}
+
+.nav-mobile.open { display: block; }
+
+.nav-mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-mobile ul a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--c-text-2);
+  text-decoration: none;
+  border-radius: var(--r-md);
+  transition: all var(--t-fast);
+}
+
+.nav-mobile ul a:hover {
+  color: var(--c-text-1);
+  background: var(--c-surface-2);
+}
+
+.nav-mobile .mobile-cta {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--c-border);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+}
+
+/* Background layers */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Video Background */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+/* Video overlay - 텍스트 가독성 확보 */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8,11,20,0.45) 0%, rgba(8,11,20,0.2) 40%, rgba(8,11,20,0.55) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(8,11,20,0.1) 0%, rgba(8,11,20,0.5) 100%);
+  z-index: 1;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -5%, rgba(124,92,252,0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 85% 60%, rgba(0,212,255,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 15% 80%, rgba(0,245,160,0.08) 0%, transparent 50%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+
+/* Floating orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero-orb-1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: -100px;
+  background: rgba(124,92,252,0.15);
+  animation: orbFloat1 8s ease-in-out infinite;
+}
+
+.hero-orb-2 {
+  width: 400px;
+  height: 400px;
+  top: 20%;
+  right: -100px;
+  background: rgba(0,212,255,0.1);
+  animation: orbFloat2 10s ease-in-out infinite;
+}
+
+.hero-orb-3 {
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  left: 30%;
+  background: rgba(0,245,160,0.07);
+  animation: orbFloat3 12s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 20px) scale(1.1); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -30px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(124,92,252,0.12);
+  border: 1px solid rgba(124,92,252,0.3);
+  border-radius: var(--r-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-primary-2);
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.02em;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--c-primary-2);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-title .line-1 { color: var(--c-text-1); }
+.hero-title .line-2 {
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title .line-3 { color: var(--c-text-1); }
+
+.hero-desc {
+  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  color: var(--c-text-2);
+  line-height: 1.75;
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+}
+
+.hero-desc strong {
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
+.hero-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.hero-tagline-item {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+}
+
+.hero-tagline-sep {
+  width: 4px;
+  height: 4px;
+  background: var(--c-text-4);
+  border-radius: 50%;
+}
+
+/* Stats */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--c-border);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,0.025);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  transition: background var(--t-base);
+}
+
+.hero-stat:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-stat-num {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hero-stat-num.grad { background: var(--g-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.hero-stat-label {
+  font-size: 0.75rem;
+  color: var(--c-text-3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* CTA Group */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+/* Scroll Indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--c-text-4);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: scrollBounce 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--c-primary), transparent);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+#about {
+  background: var(--c-bg-2);
+  position: relative;
+  overflow: hidden;
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-primary), transparent);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.about-left .section-desc {
+  margin-bottom: var(--space-lg);
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.about-value {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  transition: all var(--t-base);
+}
+
+.about-value:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+  transform: translateX(4px);
+}
+
+.about-value-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-value-icon.passion { background: rgba(255,77,109,0.15); }
+.about-value-icon.fast    { background: rgba(245,200,66,0.15); }
+.about-value-icon.trust   { background: rgba(0,212,255,0.15); }
+
+.about-value-body h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.about-value-body p {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  line-height: 1.5;
+}
+
+/* Timeline */
+.about-timeline {
+  position: relative;
+}
+
+.about-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--c-primary), transparent);
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+  position: relative;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--c-bg-3);
+  border: 2px solid var(--c-border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: all var(--t-base);
+}
+
+.timeline-item:hover .timeline-dot {
+  border-color: var(--c-primary);
+  background: rgba(124,92,252,0.15);
+  box-shadow: 0 0 16px rgba(124,92,252,0.3);
+}
+
+.timeline-dot-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-text-4);
+  transition: background var(--t-base);
+}
+
+.timeline-item:hover .timeline-dot-inner {
+  background: var(--c-primary-2);
+}
+
+.timeline-content {
+  padding-top: 8px;
+}
+
+.timeline-year {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-primary-2);
+  margin-bottom: 4px;
+}
+
+.timeline-text {
+  font-size: 0.875rem;
+  color: var(--c-text-2);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SERVICES SECTION
+   ============================================================ */
+#services {
+  position: relative;
+  overflow: hidden;
+}
+
+#services::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-border-2), transparent);
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.services-header .section-label { justify-content: center; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+.service-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-lg);
+  transition: all var(--t-base);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--g-card);
+  opacity: 0;
+  transition: opacity var(--t-base);
+}
+
+.service-card:hover {
+  border-color: rgba(124,92,252,0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(124,92,252,0.1);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-card-inner { position: relative; z-index: 1; }
+
+.service-num {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-text-4);
+  margin-bottom: var(--space-md);
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  background: rgba(124,92,252,0.12);
+  border: 1px solid rgba(124,92,252,0.2);
+  transition: all var(--t-base);
+}
+
+.service-card:hover .service-icon {
+  background: rgba(124,92,252,0.2);
+  border-color: rgba(124,92,252,0.4);
+  box-shadow: 0 0 20px rgba(124,92,252,0.2);
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--c-primary-2);
+}
+
+.service-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.service-desc {
+  font-size: 0.875rem;
+  color: var(--c-text-3);
+  line-height: 1.65;
+  margin-bottom: var(--space-md);
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.service-tag {
+  padding: 4px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--c-text-3);
+  letter-spacing: 0.04em;
+}
+
+/* Partnership Flow */
+.partnership-flow {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-xl);
+  text-align: center;
+}
+
+.partnership-flow h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.partnership-flow p {
+  font-size: 0.875rem;
+  color: var(--c-text-3);
+  margin-bottom: var(--space-xl);
+}
+
+.flow-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--c-bg-3);
+  border: 1px solid var(--c-border-2);
+  border-radius: var(--r-lg);
+  min-width: 160px;
+  transition: all var(--t-base);
+}
+
+.flow-step:hover {
+  border-color: var(--c-primary);
+  background: rgba(124,92,252,0.08);
+  transform: translateY(-4px);
+}
+
+.flow-step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-step-icon.ad   { background: rgba(124,92,252,0.15); }
+.flow-step-icon.ops  { background: rgba(0,212,255,0.15); }
+.flow-step-icon.sale { background: rgba(0,245,160,0.15); }
+
+.flow-step-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.flow-step-items {
+  font-size: 0.75rem;
+  color: var(--c-text-3);
+  line-height: 1.8;
+  text-align: center;
+}
+
+.flow-arrow {
+  color: var(--c-text-4);
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PERFORMANCE SECTION
+   ============================================================ */
+#performance {
+  background: var(--c-bg-2);
+  position: relative;
+  overflow: hidden;
+}
+
+#performance::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+}
+
+.performance-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.performance-header .section-label { justify-content: center; }
+
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.perf-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: all var(--t-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.perf-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--g-primary);
+  transform: scaleX(0);
+  transition: transform var(--t-base);
+  transform-origin: left;
+}
+
+.perf-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124,92,252,0.3);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.perf-card:hover::before { transform: scaleX(1); }
+
+.perf-num {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.perf-brand {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--c-text-1);
+  margin-bottom: 4px;
+}
+
+.perf-label {
+  font-size: 0.75rem;
+  color: var(--c-text-3);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   REFERENCES SECTION
+   ============================================================ */
+#references {
+  position: relative;
+  overflow: hidden;
+}
+
+.references-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.references-header .section-label { justify-content: center; }
+
+/* Filter Tabs */
+.ref-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.ref-tab {
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--c-text-3);
+  cursor: pointer;
+  transition: all var(--t-fast);
+  letter-spacing: 0.02em;
+}
+
+.ref-tab:hover {
+  color: var(--c-text-1);
+  border-color: var(--c-border-2);
+  background: var(--c-surface);
+}
+
+.ref-tab.active {
+  background: var(--g-primary);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(124,92,252,0.35);
+}
+
+/* Featured Cards */
+.ref-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.ref-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-lg);
+  transition: all var(--t-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.ref-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--g-card);
+  opacity: 0;
+  transition: opacity var(--t-base);
+  pointer-events: none;
+}
+
+.ref-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124,92,252,0.3);
+  box-shadow: var(--shadow-md);
+}
+
+.ref-card:hover::after { opacity: 1; }
+
+.ref-card-inner { position: relative; z-index: 1; }
+
+.ref-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.ref-badge {
+  padding: 4px 10px;
+  background: rgba(124,92,252,0.15);
+  border: 1px solid rgba(124,92,252,0.25);
+  border-radius: var(--r-full);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--c-primary-2);
+  letter-spacing: 0.04em;
+}
+
+.ref-kpi {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ref-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ref-period {
+  font-size: 0.75rem;
+  color: var(--c-text-4);
+  margin-bottom: var(--space-sm);
+}
+
+.ref-desc {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.ref-result {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--c-accent-2);
+}
+
+/* Brand Grid */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-sm);
+}
+
+.ref-brand {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: var(--space-md);
+  text-align: center;
+  transition: all var(--t-base);
+}
+
+.ref-brand:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+  transform: translateY(-2px);
+}
+
+.ref-brand-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ref-brand-period {
+  font-size: 0.6875rem;
+  color: var(--c-text-4);
+  margin-bottom: 6px;
+}
+
+.ref-brand-kpi {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--c-primary-2);
+}
+
+/* ============================================================
+   AI WORKFLOW SECTION
+   ============================================================ */
+#workflow {
+  background: var(--c-bg-2);
+  position: relative;
+  overflow: hidden;
+}
+
+#workflow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-accent-2), transparent);
+}
+
+.workflow-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.workflow-header .section-label { justify-content: center; }
+
+.workflow-steps {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+  margin-bottom: var(--space-2xl);
+}
+
+.workflow-steps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-primary), var(--c-accent), transparent);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.workflow-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-lg) var(--space-sm);
+  position: relative;
+  z-index: 1;
+}
+
+.workflow-step-num {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--c-text-4);
+  margin-bottom: var(--space-sm);
+}
+
+.workflow-step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--c-bg-3);
+  border: 2px solid var(--c-border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  transition: all var(--t-base);
+  position: relative;
+}
+
+.workflow-step-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--g-primary);
+  opacity: 0;
+  transition: opacity var(--t-base);
+  z-index: -1;
+}
+
+.workflow-step:hover .workflow-step-icon {
+  border-color: var(--c-primary);
+  background: rgba(124,92,252,0.12);
+  box-shadow: 0 0 24px rgba(124,92,252,0.3);
+}
+
+.workflow-step:hover .workflow-step-icon::before { opacity: 0.15; }
+
+.workflow-step-icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--c-primary-2);
+}
+
+.workflow-step-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.workflow-step-desc {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   DIGO PLATFORM SECTION
+   ============================================================ */
+#digo {
+  position: relative;
+  overflow: hidden;
+}
+
+.digo-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,212,255,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 50%, rgba(124,92,252,0.08) 0%, transparent 60%);
+}
+
+.digo-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+.digo-header .section-label { justify-content: center; }
+
+.digo-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+.digo-stat {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: all var(--t-base);
+}
+
+.digo-stat:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+  transform: translateY(-4px);
+}
+
+.digo-stat-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: var(--g-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.digo-stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.digo-stat-desc {
+  font-size: 0.75rem;
+  color: var(--c-text-3);
+}
+
+.digo-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+.digo-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-xl);
+  transition: all var(--t-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.digo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.digo-card.brand::before { background: var(--g-primary); }
+.digo-card.influencer::before { background: linear-gradient(135deg, #00D4FF, #00F5A0); }
+
+.digo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.digo-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.digo-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.digo-card.brand .digo-card-icon { background: rgba(124,92,252,0.15); }
+.digo-card.influencer .digo-card-icon { background: rgba(0,212,255,0.15); }
+
+.digo-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.digo-card-subtitle {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+}
+
+.digo-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.digo-feature {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.digo-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
+}
+
+.digo-feature-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--c-primary-2);
+}
+
+.digo-feature-body h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.digo-feature-body p {
+  font-size: 0.8125rem;
+  color: var(--c-text-3);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+#contact {
+  background: var(--c-bg-2);
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-primary), transparent);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.contact-left .section-title { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  transition: all var(--t-base);
+}
+
+.contact-item:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+}
+
+.contact-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: rgba(124,92,252,0.12);
+  border: 1px solid rgba(124,92,252,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--c-primary-2);
+}
+
+.contact-item-label {
+  font-size: 0.75rem;
+  color: var(--c-text-4);
+  margin-bottom: 2px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.contact-item-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--c-text-1);
+}
+
+/* Contact Form */
+.contact-form {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  padding: var(--space-xl);
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--c-text-2);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--c-bg-3);
+  border: 1px solid var(--c-border-2);
+  border-radius: var(--r-md);
+  font-size: 0.9375rem;
+  color: var(--c-text-1);
+  font-family: var(--font-base);
+  transition: all var(--t-fast);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--c-text-4);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(124,92,252,0.15);
+  background: rgba(124,92,252,0.05);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+  background: var(--c-bg);
+  border-top: 1px solid var(--c-border);
+  padding: var(--space-2xl) 0 var(--space-lg);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer-brand .nav-logo { margin-bottom: var(--space-md); }
+
+.footer-brand-desc {
+  font-size: 0.875rem;
+  color: var(--c-text-3);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+  max-width: 280px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-3);
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.footer-social-link:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+  color: var(--c-text-1);
+  transform: translateY(-2px);
+}
+
+.footer-col-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-1);
+  margin-bottom: var(--space-md);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--c-text-3);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.footer-links a:hover { color: var(--c-text-1); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--c-border);
+}
+
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--c-text-4);
+}
+
+.footer-legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-legal a {
+  font-size: 0.8125rem;
+  color: var(--c-text-4);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.footer-legal a:hover { color: var(--c-text-2); }
+
+/* ============================================================
+   FLOATING CTA
+   ============================================================ */
+.floating-cta {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--r-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--t-spring);
+  border: none;
+  outline: none;
+  box-shadow: var(--shadow-lg);
+}
+
+.floating-btn.primary {
+  background: var(--g-primary);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(124,92,252,0.5);
+}
+
+.floating-btn.primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(124,92,252,0.6);
+}
+
+.floating-btn.secondary {
+  background: rgba(8,11,20,0.9);
+  color: var(--c-text-2);
+  border: 1px solid var(--c-border-2);
+  backdrop-filter: blur(10px);
+}
+
+.floating-btn.secondary:hover {
+  transform: translateY(-3px);
+  color: var(--c-text-1);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .perf-grid { grid-template-columns: repeat(2, 1fr); }
+  .ref-featured { grid-template-columns: repeat(2, 1fr); }
+  .ref-grid { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+  .about-grid { gap: var(--space-xl); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-3xl: 5rem;
+    --space-2xl: 4rem;
+    --space-xl:  3rem;
+  }
+
+  .nav-menu, .nav-cta .btn-ghost { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .perf-grid { grid-template-columns: repeat(2, 1fr); }
+  .ref-featured { grid-template-columns: 1fr; }
+  .ref-grid { grid-template-columns: repeat(3, 1fr); }
+  .workflow-steps { flex-direction: column; }
+  .workflow-steps::before { display: none; }
+  .digo-cards { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
+  .flow-steps { flex-direction: column; align-items: center; }
+  .flow-arrow { transform: rotate(90deg); }
+  .floating-cta { bottom: 20px; right: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+  .digo-stats { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .ref-grid { grid-template-columns: repeat(2, 1fr); }
+  .perf-grid { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; width: 100%; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-border-2), transparent);
+  margin: 0;
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--t-base);
+  z-index: 500;
+  color: var(--c-text-2);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background: var(--c-surface-2);
+  color: var(--c-text-1);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--g-primary);
+  z-index: 2000;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(124,92,252,0.6);
+}
+
+/* ============================================================
+   SECTION BG VARIANTS
+   ============================================================ */
+.bg-alt { background: var(--c-bg-2); }
+.bg-base { background: var(--c-bg); }
+
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-mark">W+</div>
+      <div class="nav-logo-text">
+        <span class="name">WAPLUS</span>
+        <span class="tagline">AI Performance Agency</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#about">회사소개</a></li>
+      <li><a href="#services">서비스</a></li>
+      <li><a href="#performance">성과</a></li>
+      <li><a href="#references">레퍼런스</a></li>
+      <li><a href="#digo">DIGO AI</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://digo.ai" target="_blank" class="btn btn-ghost">DIGO™ AI</a>
+      <a href="#contact" class="btn btn-primary">무료 상담</a>
+    </div>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="nav-mobile" id="mobile-nav">
+  <ul>
+    <li><a href="#about" class="mobile-link">회사소개</a></li>
+    <li><a href="#services" class="mobile-link">서비스</a></li>
+    <li><a href="#performance" class="mobile-link">성과</a></li>
+    <li><a href="#references" class="mobile-link">레퍼런스</a></li>
+    <li><a href="#digo" class="mobile-link">DIGO AI</a></li>
+  </ul>
+  <div class="mobile-cta">
+    <a href="#contact" class="btn btn-primary mobile-link" style="width:100%;justify-content:center;">무료 상담 신청 →</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-bg">
+    <!-- AI 데이터 스트림 배경 영상 -->
+    <div class="hero-video-bg">
+      <video autoplay muted loop playsinline preload="auto" id="heroBgVideo">
+        <source src="https://waplusad-create.github.io/waplus-redesign/hero_bg_final.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge fade-up">
+      <span class="hero-badge-dot"></span>
+      K-뷰티 특화 AI 퍼포먼스 에이전시 · SINCE 2008
+    </div>
+
+    <h1 class="hero-title fade-up delay-1">
+      <span class="line-1">AI 시대,</span><br>
+      <span class="line-2">최적의 퍼포먼스</span><br>
+      <span class="line-3">에이전시</span>
+    </h1>
+
+    <p class="hero-desc fade-up delay-2">
+      <strong>10년+ 디지털 퍼포먼스 경험</strong> × AI 마케팅 자동화 플랫폼 DIGO™<br>
+      분명한 성과로 광고주의 니즈를 실현합니다
+    </p>
+
+    <div class="hero-tagline fade-up delay-3">
+      <span class="hero-tagline-item">PASSION</span>
+      <span class="hero-tagline-sep"></span>
+      <span class="hero-tagline-item">FAST</span>
+      <span class="hero-tagline-sep"></span>
+      <span class="hero-tagline-item">TRUST</span>
+    </div>
+
+    <div class="hero-stats fade-up delay-3">
+      <div class="hero-stat">
+        <div class="hero-stat-num grad" data-count="10" data-suffix="년+">0년+</div>
+        <div class="hero-stat-label">운영 경험</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num grad" data-count="24" data-suffix="+">0+</div>
+        <div class="hero-stat-label">파트너 브랜드</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num grad" data-count="400" data-suffix="%+">0%+</div>
+        <div class="hero-stat-label">최대 매출 성장</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num grad" data-count="50" data-suffix="억">0억</div>
+        <div class="hero-stat-label">월 디지털 매출</div>
+      </div>
+    </div>
+
+    <div class="hero-cta fade-up delay-4">
+      <a href="#contact" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        무료 상담 신청
+      </a>
+      <a href="#digo" class="btn btn-outline btn-lg">
+        DIGO AI 플랫폼 보기
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+      <a href="#references" class="btn btn-ghost btn-lg">성공 사례 보기</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section bg-alt">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <span class="section-label fade-up">ABOUT WAPLUS</span>
+        <h2 class="section-title fade-up delay-1">
+          AI와 데이터로<br>
+          <em>성과를 만드는</em><br>
+          디지털 파트너
+        </h2>
+        <p class="section-desc fade-up delay-2">
+          2013년 설립된 주식회사 와플러스는 10년 이상의 디지털 퍼포먼스 마케팅 전문 에이전시입니다. 오버추어 전문가 자격증 취득(2008)부터 시작된 깊은 경험을 바탕으로, 국내 주요 K-뷰티 브랜드 및 대기업과 함께 성장해왔습니다.
+        </p>
+        <p class="section-desc fade-up delay-3" style="margin-top:1rem;">
+          2025년에는 AI 마케팅 자동화 플랫폼 <strong>DIGO™</strong>를 출시하여 콘텐츠 자동화, 인플루언서 매칭, 퍼포먼스 최적화를 통해 광고주의 목표 KPI를 극대화합니다.
+        </p>
+
+        <div class="about-values" style="margin-top:2rem;">
+          <div class="about-value fade-up delay-3">
+            <div class="about-value-icon passion">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF4D6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </div>
+            <div class="about-value-body">
+              <h4>PASSION — 열정적 실행</h4>
+              <p>모든 캠페인에 최선을 다하는 열정으로 광고주의 목표를 실현합니다.</p>
+            </div>
+          </div>
+          <div class="about-value fade-up delay-4">
+            <div class="about-value-icon fast">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5C842" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div class="about-value-body">
+              <h4>FAST — 빠른 대응</h4>
+              <p>시장 변화에 즉각 반응하고 신속한 의사결정으로 기회를 포착합니다.</p>
+            </div>
+          </div>
+          <div class="about-value fade-up delay-5">
+            <div class="about-value-icon trust">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="about-value-body">
+              <h4>TRUST — 신뢰 기반</h4>
+              <p>투명한 데이터와 성과 기반 운영으로 장기적 파트너십을 구축합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <span class="section-label fade-up">HISTORY</span>
+        <div class="about-timeline fade-up delay-1">
+          <div class="timeline-item">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2008</div>
+              <div class="timeline-text">오버추어 전문가 자격증 취득 · 귀뚜라미그룹 파트너십 시작</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2013</div>
+              <div class="timeline-text">주식회사 와플러스 설립</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2015</div>
+              <div class="timeline-text">조성아뷰티 1989 파트너십 시작</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2018</div>
+              <div class="timeline-text">뷰티 특화 퍼포먼스 에이전시 도약 · 문샷 등 K-뷰티 대형 브랜드 확장</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2022</div>
+              <div class="timeline-text">릴리바이레드 · 현대백화점카드 파트너십</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="border-color:var(--c-primary);background:rgba(124,92,252,0.15);">
+              <div class="timeline-dot-inner" style="background:var(--c-primary-2);"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-year" style="color:var(--c-primary-2);">2025</div>
+              <div class="timeline-text"><strong>AI 마케팅 자동화 플랫폼 DIGO™ 출시 · AI 퍼포먼스 에이전시로 도약</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services" class="section bg-base">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label fade-up">SERVICES</span>
+      <h2 class="section-title fade-up delay-1">AI가 강화한<br><em>통합 마케팅 서비스</em></h2>
+      <p class="section-desc fade-up delay-2" style="margin:0 auto;">광고부터 운영, 판매까지 책임지는 진정한 퍼포먼스 파트너십</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- 01 -->
+      <div class="service-card fade-up delay-1">
+        <div class="service-card-inner">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none" opacity="0.3"/><path d="M17 15.5v1.5l1 1" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="service-title">AI 콘텐츠 자동화</h3>
+          <p class="service-desc">DIGO™ AI가 상세페이지, SNS 포스팅, 광고 카피를 자동 생성합니다. 콘텐츠 생산성 3배 향상.</p>
+          <div class="service-tags">
+            <span class="service-tag">AI 생성</span>
+            <span class="service-tag">SNS 콘텐츠</span>
+            <span class="service-tag">광고 카피</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="service-card fade-up delay-2">
+        <div class="service-card-inner">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3 class="service-title">통합 이커머스 운영</h3>
+          <p class="service-desc">자사몰, 스마트스토어, 쿠팡 등 전 채널 통합 운영으로 매출과 KPI를 극대화합니다.</p>
+          <div class="service-tags">
+            <span class="service-tag">자사몰</span>
+            <span class="service-tag">스마트스토어</span>
+            <span class="service-tag">쿠팡</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="service-card fade-up delay-3">
+        <div class="service-card-inner">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+          </div>
+          <h3 class="service-title">마케팅 자동화</h3>
+          <p class="service-desc">AI 기반 업무 자동화로 효율성을 극대화합니다. 반복 업무 70% 시간 단축 효과.</p>
+          <div class="service-tags">
+            <span class="service-tag">업무 자동화</span>
+            <span class="service-tag">DIGO™</span>
+            <span class="service-tag">데이터 분석</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="service-card fade-up delay-1">
+        <div class="service-card-inner">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="service-title">고객 데이터 관리</h3>
+          <p class="service-desc">AI로 데이터를 수집·분석하고 행동 패턴을 파악하여 최적화된 타겟팅을 제공합니다.</p>
+          <div class="service-tags">
+            <span class="service-tag">GA4</span>
+            <span class="service-tag">CRM</span>
+            <span class="service-tag">타겟팅</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="service-card fade-up delay-2">
+        <div class="service-card-inner">
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <h3 class="service-title">SNS 채널 운영</h3>
+          <p class="service-desc">인스타그램, 유튜브, 네이버 블로그, 페이스북 전 채널 통합 운영. 체험단·인플루언서 전문.</p>
+          <div class="service-tags">
+            <span class="service-tag">인스타그램</span>
+            <span class="service-tag">유튜브</span>
+            <span class="service-tag">체험단</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="service-card fade-up delay-3">
+        <div class="service-card-inner">
+          <div class="service-num">06</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="service-title">퍼포먼스 파트너십</h3>
+          <p class="service-desc">광고뿐만 아닌 운영부터 판매, 매출까지 책임지는 진정한 파트너십. 성과 기반 투명한 운영.</p>
+          <div class="service-tags">
+            <span class="service-tag">성과 기반</span>
+            <span class="service-tag">사이트 구축</span>
+            <span class="service-tag">컨설팅</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnership Flow -->
+    <div class="partnership-flow fade-up">
+      <h3>와플러스 통합 파트너십 구조</h3>
+      <p>광고 → 운영 → 판매까지 책임지는 End-to-End 파트너</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-icon ad">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9B7FFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="flow-step-title">광고</div>
+          <div class="flow-step-items">퍼포먼스 광고<br>브랜딩 캠페인<br>키워드 AD</div>
+        </div>
+        <div class="flow-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon ops">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div class="flow-step-title">운영</div>
+          <div class="flow-step-items">채널 운영<br>자사몰 운영<br>외부몰 운영</div>
+        </div>
+        <div class="flow-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-icon sale">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00F5A0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="flow-step-title">판매</div>
+          <div class="flow-step-items">세일즈 전략<br>매출 분석<br>D2C 최적화</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PERFORMANCE
+     ============================================================ -->
+<section id="performance" class="section bg-alt">
+  <div class="container">
+    <div class="performance-header">
+      <span class="section-label fade-up">PERFORMANCE</span>
+      <h2 class="section-title fade-up delay-1">숫자로 증명하는<br><em>와플러스의 성과</em></h2>
+    </div>
+
+    <div class="perf-grid">
+      <div class="perf-card fade-up delay-1">
+        <div class="perf-num">10년+</div>
+        <div class="perf-brand">와플러스</div>
+        <div class="perf-label">디지털 마케팅 전문 운영 경력</div>
+      </div>
+      <div class="perf-card fade-up delay-2">
+        <div class="perf-num">400%+</div>
+        <div class="perf-brand">릴리바이레드</div>
+        <div class="perf-label">자사몰 매출 성장</div>
+      </div>
+      <div class="perf-card fade-up delay-3">
+        <div class="perf-num">50억</div>
+        <div class="perf-brand">조성아뷰티</div>
+        <div class="perf-label">월 디지털 매출</div>
+      </div>
+      <div class="perf-card fade-up delay-4">
+        <div class="perf-num">500%+</div>
+        <div class="perf-brand">문샷</div>
+        <div class="perf-label">자사몰 매출 상승</div>
+      </div>
+      <div class="perf-card fade-up delay-1">
+        <div class="perf-num">300%+</div>
+        <div class="perf-brand">유이크</div>
+        <div class="perf-label">브랜드 검색 쿼리</div>
+      </div>
+      <div class="perf-card fade-up delay-2">
+        <div class="perf-num">800%+</div>
+        <div class="perf-brand">아쿠아픽</div>
+        <div class="perf-label">네이버 ROAS</div>
+      </div>
+      <div class="perf-card fade-up delay-3">
+        <div class="perf-num">일 5천만</div>
+        <div class="perf-brand">오제끄</div>
+        <div class="perf-label">자사몰 일 매출</div>
+      </div>
+      <div class="perf-card fade-up delay-4">
+        <div class="perf-num">150%+</div>
+        <div class="perf-brand">현대백화점카드</div>
+        <div class="perf-label">카드 발급 성과</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REFERENCES
+     ============================================================ -->
+<section id="references" class="section bg-base">
+  <div class="container">
+    <div class="references-header">
+      <span class="section-label fade-up">REFERENCES</span>
+      <h2 class="section-title fade-up delay-1">함께 성장한<br><em>24+ 파트너 브랜드</em></h2>
+      <p class="section-desc fade-up delay-2" style="margin:0 auto;">K-뷰티부터 대기업까지, 다양한 산업군의 브랜드와 함께 디지털 성과를 만들어왔습니다.</p>
+    </div>
+
+    <div class="ref-tabs fade-up">
+      <button class="ref-tab active" data-filter="all">전체 (24+)</button>
+      <button class="ref-tab" data-filter="beauty">K-뷰티</button>
+      <button class="ref-tab" data-filter="lifestyle">라이프스타일</button>
+      <button class="ref-tab" data-filter="enterprise">대기업/금융</button>
+      <button class="ref-tab" data-filter="build">사이트 구축</button>
+    </div>
+
+    <!-- Featured -->
+    <div class="ref-featured" id="ref-featured">
+      <div class="ref-card fade-up delay-1" data-cat="beauty">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge">K-뷰티</span>
+            <span class="ref-kpi">400%+</span>
+          </div>
+          <div class="ref-name">릴리바이레드 lilybyred</div>
+          <div class="ref-period">2022년~ · K-뷰티</div>
+          <div class="ref-desc">디지털 통합 마케팅 · 자사몰 퍼포먼스 · 인플루언서/이벤트 활용</div>
+          <div class="ref-result">→ 자사몰 매출 성장률 400%+ 달성</div>
+        </div>
+      </div>
+      <div class="ref-card fade-up delay-2" data-cat="beauty">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge">K-뷰티</span>
+            <span class="ref-kpi">50억</span>
+          </div>
+          <div class="ref-name">조성아뷰티 1989</div>
+          <div class="ref-period">2015년~ · K-뷰티</div>
+          <div class="ref-desc">홈쇼핑 매출 디지털 전환 · 인플루언서/제품발색/이벤트 활용</div>
+          <div class="ref-result">→ 월 디지털 매출 50억 달성</div>
+        </div>
+      </div>
+      <div class="ref-card fade-up delay-3" data-cat="beauty">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge">K-뷰티</span>
+            <span class="ref-kpi">500%+</span>
+          </div>
+          <div class="ref-name">문샷 moonshot</div>
+          <div class="ref-period">2018년~ · K-뷰티</div>
+          <div class="ref-desc">신제품 홍보 콘텐츠/퍼포먼스 마케팅 · 인플루언서/이벤트 활용</div>
+          <div class="ref-result">→ 자사몰 매출 500%+ 상승</div>
+        </div>
+      </div>
+      <div class="ref-card fade-up delay-1" data-cat="lifestyle">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge" style="background:rgba(0,212,255,0.12);border-color:rgba(0,212,255,0.25);color:var(--c-accent);">라이프스타일</span>
+            <span class="ref-kpi">1위</span>
+          </div>
+          <div class="ref-name">귀뚜라미 Kiturami</div>
+          <div class="ref-period">2008년~ · 라이프스타일</div>
+          <div class="ref-desc">브랜딩 콘텐츠/퍼포먼스 마케팅 · 모델/인플루언서/이벤트 활용</div>
+          <div class="ref-result">→ 신제품 독보적 시장 점유율 달성</div>
+        </div>
+      </div>
+      <div class="ref-card fade-up delay-2" data-cat="beauty">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge">K-뷰티</span>
+            <span class="ref-kpi">일 5천만</span>
+          </div>
+          <div class="ref-name">오제끄 OSÈQUE</div>
+          <div class="ref-period">2024년~ · K-뷰티</div>
+          <div class="ref-desc">D2C 기반 세일즈 퍼포먼스 마케팅 · 모델/인플루언서 활용</div>
+          <div class="ref-result">→ 자사몰 일 매출 5천만원 달성</div>
+        </div>
+      </div>
+      <div class="ref-card fade-up delay-3" data-cat="enterprise">
+        <div class="ref-card-inner">
+          <div class="ref-card-header">
+            <span class="ref-badge" style="background:rgba(245,200,66,0.12);border-color:rgba(245,200,66,0.25);color:var(--c-gold);">금융</span>
+            <span class="ref-kpi">150%+</span>
+          </div>
+          <div class="ref-name">현대백화점카드</div>
+          <div class="ref-period">2022년~ · 금융</div>
+          <div class="ref-desc">네이버 신용카드 검색 운영 · 이용고객 타겟팅 기반 카드 발급 최적화</div>
+          <div class="ref-result">→ 카드 발급 성과 매년 150%+ 성장</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand Grid -->
+    <div class="ref-grid fade-up" id="ref-grid">
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">잇츠스킨</div>
+        <div class="ref-brand-period">2015~</div>
+        <div class="ref-brand-kpi">자사몰 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">토니모리</div>
+        <div class="ref-brand-period">2022~</div>
+        <div class="ref-brand-kpi">매출 150%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">메이크힐</div>
+        <div class="ref-brand-period">2022~</div>
+        <div class="ref-brand-kpi">자사몰 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">제니하우스</div>
+        <div class="ref-brand-period">2021~</div>
+        <div class="ref-brand-kpi">자사몰 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">유이크 UIQ</div>
+        <div class="ref-brand-period">2021~</div>
+        <div class="ref-brand-kpi">검색 300%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">락토클리어</div>
+        <div class="ref-brand-period">2021~</div>
+        <div class="ref-brand-kpi">점유율 2배+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">이로로</div>
+        <div class="ref-brand-period">2022~</div>
+        <div class="ref-brand-kpi">검색 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">아쿠아픽</div>
+        <div class="ref-brand-period">2025~</div>
+        <div class="ref-brand-kpi">ROAS 800%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">FCMM</div>
+        <div class="ref-brand-period">2025~</div>
+        <div class="ref-brand-kpi">자사몰 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">멜로스킨</div>
+        <div class="ref-brand-period">2026~</div>
+        <div class="ref-brand-kpi">매출 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="lifestyle">
+        <div class="ref-brand-name">불스원샷</div>
+        <div class="ref-brand-period">2024~</div>
+        <div class="ref-brand-kpi">점유율 2배+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">나우앤댄</div>
+        <div class="ref-brand-period">2020~</div>
+        <div class="ref-brand-kpi">검색 200%+</div>
+      </div>
+      <div class="ref-brand" data-cat="beauty">
+        <div class="ref-brand-name">오색약손</div>
+        <div class="ref-brand-period">2024~</div>
+        <div class="ref-brand-kpi">일 5천만원</div>
+      </div>
+      <div class="ref-brand" data-cat="build">
+        <div class="ref-brand-name">롯데</div>
+        <div class="ref-brand-period">구축</div>
+        <div class="ref-brand-kpi">윤리경영 사이트</div>
+      </div>
+      <div class="ref-brand" data-cat="build">
+        <div class="ref-brand-name">HEINEKEN</div>
+        <div class="ref-brand-period">구축</div>
+        <div class="ref-brand-kpi">채용 웹사이트</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AI WORKFLOW
+     ============================================================ -->
+<section id="workflow" class="section bg-alt">
+  <div class="container">
+    <div class="workflow-header">
+      <span class="section-label fade-up">AI WORKFLOW</span>
+      <h2 class="section-title fade-up delay-1">AI가 자동화하는<br><em>마케팅 전 과정</em></h2>
+      <p class="section-desc fade-up delay-2" style="margin:0 auto;">DIGO™ AI가 데이터 수집부터 성과 최적화까지 자동으로 처리합니다</p>
+    </div>
+
+    <div class="workflow-steps fade-up delay-1">
+      <div class="workflow-step">
+        <div class="workflow-step-num">01</div>
+        <div class="workflow-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="workflow-step-title">데이터 수집</div>
+        <div class="workflow-step-desc">시장·경쟁사·소비자 데이터를 AI가 자동 수집</div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">02</div>
+        <div class="workflow-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="workflow-step-title">AI 분석</div>
+        <div class="workflow-step-desc">딥러닝으로 최적 인플루언서·채널·타이밍 분석</div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">03</div>
+        <div class="workflow-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="workflow-step-title">자동 매칭</div>
+        <div class="workflow-step-desc">98% 정확도로 브랜드-인플루언서 최적 매칭</div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">04</div>
+        <div class="workflow-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="workflow-step-title">캠페인 실행</div>
+        <div class="workflow-step-desc">콘텐츠 자동 생성·배포·모니터링 일괄 처리</div>
+      </div>
+      <div class="workflow-step">
+        <div class="workflow-step-num">05</div>
+        <div class="workflow-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <div class="workflow-step-title">성과 최적화</div>
+        <div class="workflow-step-desc">실시간 데이터로 ROI 극대화 자동 최적화</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DIGO PLATFORM
+     ============================================================ -->
+<section id="digo" class="section bg-base">
+  <div class="digo-bg"></div>
+  <div class="container">
+    <div class="digo-header">
+      <span class="section-label fade-up">DIGO™ AI PLATFORM</span>
+      <h2 class="section-title fade-up delay-1">와플러스가 만든<br><em>AI 마케팅 플랫폼</em></h2>
+      <p class="section-desc fade-up delay-2" style="margin:0 auto;">브랜드와 인플루언서를 위한 CPS 기반 AI 매칭 플랫폼. 실제 판매 성과에만 비용을 지불하는 리스크 없는 마케팅.</p>
+    </div>
+
+    <div class="digo-stats fade-up delay-1">
+      <div class="digo-stat">
+        <div class="digo-stat-num">98%</div>
+        <div class="digo-stat-label">인플루언서 매칭 정확도</div>
+        <div class="digo-stat-desc">AI 기반 제품-인플루언서 최적 매칭</div>
+      </div>
+      <div class="digo-stat">
+        <div class="digo-stat-num">3.5x</div>
+        <div class="digo-stat-label">평균 ROI</div>
+        <div class="digo-stat-desc">성과 기반 CPS 모델의 실제 수익률</div>
+      </div>
+      <div class="digo-stat">
+        <div class="digo-stat-num">50K+</div>
+        <div class="digo-stat-label">인플루언서 DB</div>
+        <div class="digo-stat-desc">검증된 크리에이터 데이터베이스</div>
+      </div>
+    </div>
+
+    <div class="digo-cards fade-up delay-2">
+      <!-- Brand -->
+      <div class="digo-card brand">
+        <div class="digo-card-header">
+          <div class="digo-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9B7FFF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div>
+            <div class="digo-card-title">브랜드를 위한 DIGO™</div>
+            <div class="digo-card-subtitle">효율적인 마케팅의 시작</div>
+          </div>
+        </div>
+        <div class="digo-features">
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>AI 기반 인플루언서 매칭</h4>
+              <p>제품 특성과 타겟 고객을 분석하여 최적의 인플루언서를 자동으로 추천합니다. 98% 매칭 정확도.</p>
+            </div>
+          </div>
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>성과 기반 CPS 수익 모델</h4>
+              <p>실제 판매가 발생할 때만 비용이 지불되는 리스크 없는 마케팅. 예산 낭비 없는 퍼포먼스.</p>
+            </div>
+          </div>
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>실시간 성과 트래킹</h4>
+              <p>캠페인 성과를 실시간으로 모니터링하고 데이터 기반 의사결정을 내리세요.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://digo.ai" target="_blank" class="btn btn-primary">브랜드로 시작하기 →</a>
+      </div>
+
+      <!-- Influencer -->
+      <div class="digo-card influencer">
+        <div class="digo-card-header">
+          <div class="digo-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div class="digo-card-title">인플루언서를 위한 DIGO™</div>
+            <div class="digo-card-subtitle">수익 창출의 새로운 방법</div>
+          </div>
+        </div>
+        <div class="digo-features">
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>자동화된 CPS 어필리에이트 연결</h4>
+              <p>복잡한 계약 없이 원하는 제품을 선택하고 바로 홍보를 시작하세요. 간편한 링크 생성.</p>
+            </div>
+          </div>
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>투명한 수익 분배</h4>
+              <p>실시간으로 수익을 확인하고, 정확하고 빠른 정산을 보장받으세요. 투명한 정산 시스템.</p>
+            </div>
+          </div>
+          <div class="digo-feature">
+            <div class="digo-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-
+2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="digo-feature-body">
+              <h4>브랜드 직접 협업 기회</h4>
+              <p>검증된 브랜드와 직접 협업하여 더 높은 수익과 장기적인 파트너십을 구축하세요.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://digo.ai" target="_blank" class="btn btn-outline" style="border-color:rgba(0,212,255,0.4);color:var(--c-accent);">인플루언서로 시작하기 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section bg-alt">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label fade-up">CONTACT</span>
+        <h2 class="section-title fade-up delay-1">
+          지금 바로<br><em>무료 상담</em>을<br>신청하세요
+        </h2>
+        <p class="section-desc fade-up delay-2">
+          와플러스 전문 컨설턴트가 브랜드의 디지털 성장 전략을 함께 설계해 드립니다.
+        </p>
+
+        <div class="contact-info fade-up delay-3">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">전화 상담</div>
+              <div class="contact-item-value">02-000-0000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">이메일</div>
+              <div class="contact-item-value">contact@waplus.co.kr</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">주소</div>
+              <div class="contact-item-value">서울특별시 강남구</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up delay-2">
+        <div class="form-title">무료 상담 신청</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">담당자명 *</label>
+            <input type="text" class="form-input" placeholder="홍길동">
+          </div>
+          <div class="form-group">
+            <label class="form-label">연락처 *</label>
+            <input type="tel" class="form-input" placeholder="010-0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">회사명 *</label>
+          <input type="text" class="form-input" placeholder="주식회사 ○○○">
+        </div>
+        <div class="form-group">
+          <label class="form-label">관심 서비스</label>
+          <select class="form-select">
+            <option value="" disabled selected>서비스를 선택해주세요</option>
+            <option>AI 콘텐츠 자동화</option>
+            <option>통합 이커머스 운영</option>
+            <option>마케팅 자동화</option>
+            <option>SNS 채널 운영</option>
+            <option>퍼포먼스 파트너십</option>
+            <option>DIGO™ AI 플랫폼</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">문의 내용</label>
+          <textarea class="form-textarea" placeholder="브랜드 소개 및 문의 내용을 자유롭게 작성해주세요."></textarea>
+        </div>
+        <button class="btn btn-primary form-submit" onclick="handleFormSubmit(this)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          무료 상담 신청하기
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
+          <div class="nav-logo-mark">W+</div>
+          <div class="nav-logo-text">
+            <span class="name">WAPLUS</span>
+            <span class="tagline">AI Performance Agency</span>
+          </div>
+        </a>
+        <p class="footer-brand-desc">
+          K-뷰티 특화 AI 퍼포먼스 에이전시. 10년+ 디지털 퍼포먼스 경험과 AI 마케팅 자동화 플랫폼 DIGO™로 분명한 성과를 만듭니다.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="인스타그램">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="유튜브">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="블로그">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">서비스</div>
+        <ul class="footer-links">
+          <li><a href="#services">AI 콘텐츠 자동화</a></li>
+          <li><a href="#services">통합 이커머스 운영</a></li>
+          <li><a href="#services">마케팅 자동화</a></li>
+          <li><a href="#services">SNS 채널 운영</a></li>
+          <li><a href="#services">퍼포먼스 파트너십</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">회사</div>
+        <ul class="footer-links">
+          <li><a href="#about">회사소개</a></li>
+          <li><a href="#performance">성과</a></li>
+          <li><a href="#references">레퍼런스</a></li>
+          <li><a href="#digo">DIGO™ AI</a></li>
+          <li><a href="#contact">무료 상담</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">DIGO™</div>
+        <ul class="footer-links">
+          <li><a href="https://digo.ai" target="_blank">플랫폼 소개</a></li>
+          <li><a href="https://digo.ai" target="_blank">브랜드 시작하기</a></li>
+          <li><a href="https://digo.ai" target="_blank">인플루언서 등록</a></li>
+          <li><a href="#workflow">AI 워크플로우</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 주식회사 와플러스. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     FLOATING CTA
+     ============================================================ -->
+<div class="floating-cta">
+  <a href="https://digo.ai" target="_blank" class="floating-btn secondary">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+    DIGO™ AI
+  </a>
+  <a href="#contact" class="floating-btn primary">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    무료 상담
+  </a>
+</div>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="맨 위로">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── Progress Bar ──────────────────────────────────────── */
+  const progressBar = document.getElementById('progress-bar');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+  }
+
+  /* ── Nav Scroll Effect ─────────────────────────────────── */
+  const nav = document.getElementById('nav');
+  function updateNav() {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  /* ── Active Nav Link ───────────────────────────────────── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+
+  function updateActiveLink() {
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + section.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  /* ── Back to Top ───────────────────────────────────────── */
+  const backToTop = document.getElementById('back-to-top');
+  function updateBackToTop() {
+    if (window.scrollY > 400) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ── Scroll Handler ────────────────────────────────────── */
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateProgress();
+        updateNav();
+        updateActiveLink();
+        updateBackToTop();
+        checkFadeUps();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ── Hamburger Menu ────────────────────────────────────── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    });
+  });
+
+  /* ── Fade Up Observer ──────────────────────────────────── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '60px 0px 60px 0px' });
+
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  // Immediate check for elements already in viewport
+  function checkFadeUps() {
+    fadeEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 60 && rect.bottom > -60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  // Run immediately and after a short delay
+  checkFadeUps();
+  setTimeout(checkFadeUps, 50);
+  setTimeout(checkFadeUps, 200);
+  window.addEventListener('scroll', checkFadeUps, { passive: true });
+
+  /* ── Counter Animation ─────────────────────────────────── */
+  const counterEls = document.querySelectorAll('[data-count]');
+  let countersStarted = false;
+
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateCounter(el, target, suffix, duration) {
+    const start = performance.now();
+    const isDecimal = target % 1 !== 0;
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutQuart(progress);
+      const current = isDecimal
+        ? (eased * target).toFixed(1)
+        : Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  function startCounters() {
+    if (countersStarted) return;
+    const heroStats = document.querySelector('.hero-stats');
+    if (!heroStats) return;
+    const rect = heroStats.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9) {
+      countersStarted = true;
+      counterEls.forEach((el, i) => {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        setTimeout(() => {
+          animateCounter(el, target, suffix, 1800);
+        }, i * 150);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', startCounters, { passive: true });
+  setTimeout(startCounters, 500);
+
+  /* ── Reference Filter ──────────────────────────────────── */
+  const refTabs = document.querySelectorAll('.ref-tab');
+  const refCards = document.querySelectorAll('#ref-featured .ref-card');
+  const refBrands = document.querySelectorAll('#ref-grid .ref-brand');
+
+  refTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      refTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const filter = tab.dataset.filter;
+
+      refCards.forEach(card => {
+        const cat = card.dataset.cat;
+        const show = filter === 'all' || cat === filter;
+        card.style.display = show ? '' : 'none';
+        card.style.opacity = show ? '' : '0';
+      });
+
+      refBrands.forEach(brand => {
+        const cat = brand.dataset.cat;
+        const show = filter === 'all' || cat === filter;
+        brand.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  /* ── Smooth Scroll for all anchor links ────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── Parallax Orbs ─────────────────────────────────────── */
+  const orbs = document.querySelectorAll('.hero-orb');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    orbs.forEach((orb, i) => {
+      const speed = 0.05 + i * 0.02;
+      orb.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+  }, { passive: true });
+
+  /* ── Form Submit ───────────────────────────────────────── */
+  window.handleFormSubmit = function(btn) {
+    btn.disabled = true;
+    btn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      전송 중...
+    `;
+    setTimeout(() => {
+      btn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        상담 신청 완료!
+      `;
+      btn.style.background = 'linear-gradient(135deg, #00D4FF, #00F5A0)';
+      btn.style.boxShadow = '0 4px 20px rgba(0,212,255,0.4)';
+    }, 1500);
+  };
+
+  /* ── Spin keyframe ─────────────────────────────────────── */
+  const style = document.createElement('style');
+  style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+  document.head.appendChild(style);
+
+  /* ── Initial calls ─────────────────────────────────────── */
+  updateNav();
+  updateBackToTop();
+
+})();
+</script>
+
+</body>
+</html>
