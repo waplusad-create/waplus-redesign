@@ -1689,6 +1689,481 @@ body::before {
 }
 
 /* ============================================================
+   SPATIAL 3D — WORLD LABS ATLAS
+   ============================================================ */
+#spatial {
+  background: var(--c-bg);
+  overflow: hidden;
+}
+
+#spatial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 14% 18%, rgba(124,92,252,0.13) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 50% at 88% 78%, rgba(0,212,255,0.10) 0%, transparent 62%);
+}
+
+.spatial-head {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: var(--space-xl);
+  align-items: start;
+  margin-bottom: var(--space-xl);
+}
+
+.spatial-head > div:last-child { padding-top: 4px; }
+.spatial-head .section-title { margin-bottom: 0; }
+.spatial-head .section-desc { max-width: none; }
+
+.spatial-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--space-md);
+}
+
+.spatial-tags span {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+  padding: 7px 13px;
+}
+
+.spatial-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.66fr) minmax(0, 1fr);
+  gap: var(--space-md);
+  align-items: stretch;
+}
+
+/* ── Viewer ───────────────────────────────────────────────── */
+.spatial-viewer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  border: 1px solid var(--c-border-2);
+  border-radius: var(--r-xl);
+  background: linear-gradient(180deg, #0A0E1A 0%, #05070E 100%);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(124,92,252,0.06);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.spatial-viewer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), inset 0 0 90px rgba(6,8,14,0.9);
+}
+
+.spatial-toolbar {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--c-border);
+  background: rgba(8,11,20,0.82);
+  backdrop-filter: blur(14px);
+}
+
+.spatial-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+}
+
+.spatial-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--c-text-3);
+  font-family: inherit;
+  font-size: 0.78125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 8px 15px;
+  border-radius: var(--r-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+.spatial-tab:hover { color: var(--c-text-1); }
+
+.spatial-tab.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(124,92,252,0.9) 0%, rgba(0,212,255,0.75) 100%);
+  box-shadow: 0 4px 18px rgba(124,92,252,0.35);
+}
+
+.spatial-tools { display: flex; align-items: center; gap: 6px; }
+
+.spatial-tool {
+  appearance: none;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.03);
+  color: var(--c-text-2);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.spatial-tool svg { width: 15px; height: 15px; }
+.spatial-tool:hover { color: #fff; border-color: var(--c-border-2); background: rgba(255,255,255,0.08); }
+
+.spatial-tool.is-active {
+  color: var(--c-accent);
+  border-color: rgba(0,212,255,0.45);
+  background: rgba(0,212,255,0.10);
+}
+
+.spatial-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 400px;
+  cursor: grab;
+}
+
+.spatial-canvas:active { cursor: grabbing; }
+.spatial-canvas canvas { display: block; width: 100%; height: 100%; }
+
+.spatial-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.65625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+  background: rgba(8,11,20,0.62);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+  padding: 6px 12px;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+.spatial-badge i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent-2);
+  box-shadow: 0 0 10px var(--c-accent-2);
+  animation: spatialPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes spatialPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+
+.spatial-caption {
+  position: absolute;
+  left: 20px;
+  bottom: 18px;
+  z-index: 3;
+  max-width: 340px;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.spatial-caption.swap { opacity: 0; transform: translateY(6px); }
+
+.spatial-caption-cat {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--c-accent);
+  margin-bottom: 6px;
+}
+
+.spatial-caption h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.spatial-caption p {
+  font-size: 0.78125rem;
+  line-height: 1.55;
+  color: var(--c-text-2);
+}
+
+.spatial-hint {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--c-text-3);
+  background: rgba(8,11,20,0.55);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-full);
+  padding: 7px 12px;
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.spatial-hint svg { width: 13px; height: 13px; }
+.spatial-hint.hide { opacity: 0; }
+
+.spatial-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--c-text-3);
+  background: rgba(5,7,14,0.85);
+  transition: opacity 0.5s ease;
+}
+
+.spatial-loader span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-top-color: var(--c-primary-2);
+  animation: spin 0.9s linear infinite;
+}
+
+.spatial-loader.hide { opacity: 0; pointer-events: none; }
+
+.spatial-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: var(--space-lg);
+  background:
+    radial-gradient(ellipse 60% 60% at 30% 20%, rgba(124,92,252,0.22), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 85%, rgba(0,212,255,0.18), transparent 70%),
+    #070A12;
+}
+
+.spatial-fallback strong { font-size: 0.9375rem; color: #fff; }
+.spatial-fallback p { font-size: 0.78125rem; color: var(--c-text-3); }
+.spatial-viewer.is-static .spatial-fallback { display: flex; }
+.spatial-viewer.is-static .spatial-canvas { cursor: default; }
+
+.spatial-embed {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: #05070E;
+}
+
+.spatial-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+.spatial-embed[hidden] { display: none; }
+
+.spatial-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: #05070E center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+}
+
+.spatial-poster::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,7,14,0) 40%, rgba(5,7,14,0.85) 100%);
+  pointer-events: none;
+}
+
+.spatial-poster-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+}
+
+.spatial-poster-link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(255,255,255,0.26);
+  background: rgba(8,11,20,0.55);
+  backdrop-filter: blur(10px);
+}
+
+.spatial-poster-link:hover { background: rgba(124,92,252,0.55); border-color: transparent; }
+.spatial-poster[hidden] { display: none; }
+
+/* ── Side panel ───────────────────────────────────────────── */
+.spatial-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.spatial-card {
+  position: relative;
+  flex: 1;
+  padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) + 46px);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.spatial-card:hover {
+  background: var(--c-surface-2);
+  border-color: var(--c-border-2);
+  transform: translateY(-3px);
+}
+
+.spatial-card-icon {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  background: rgba(124,92,252,0.12);
+  color: var(--c-primary-2);
+}
+
+.spatial-card:nth-child(2) .spatial-card-icon { background: rgba(0,212,255,0.12); color: var(--c-accent); }
+.spatial-card:nth-child(3) .spatial-card-icon { background: rgba(0,245,160,0.10); color: var(--c-accent-2); }
+.spatial-card-icon svg { width: 17px; height: 17px; }
+
+.spatial-card h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 5px;
+}
+
+.spatial-card p {
+  font-size: 0.78125rem;
+  line-height: 1.6;
+  color: var(--c-text-3);
+}
+
+.spatial-card .spatial-card-meta {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.65625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.34);
+}
+
+.spatial-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 16px var(--space-md);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(124,92,252,0.28);
+  background:
+    linear-gradient(135deg, rgba(124,92,252,0.18) 0%, rgba(0,212,255,0.10) 100%);
+}
+
+.spatial-cta-text {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--c-text-2);
+}
+
+.spatial-cta-text strong { display: block; color: #fff; font-size: 0.875rem; margin-bottom: 2px; }
+
+.spatial-cta .btn { white-space: nowrap; font-size: 0.8125rem; padding: 10px 16px; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .spatial-head { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .spatial-stage { grid-template-columns: 1fr; }
+  .spatial-side { flex-direction: row; flex-wrap: wrap; }
+  .spatial-card { flex: 1 1 260px; }
+  .spatial-cta { flex: 1 1 100%; }
+}
+
+@media (max-width: 768px) {
+  .spatial-viewer { min-height: 420px; }
+  .spatial-canvas { min-height: 320px; }
+  .spatial-toolbar { flex-wrap: wrap; padding: 10px; }
+  .spatial-tabs { width: 100%; justify-content: center; }
+  .spatial-tools { width: 100%; justify-content: flex-end; }
+  .spatial-caption { max-width: 62%; left: 14px; bottom: 14px; }
+  .spatial-caption h3 { font-size: 1rem; }
+  .spatial-caption p { display: none; }
+  .spatial-hint { display: none; }
+  .spatial-side { flex-direction: column; }
+  .spatial-card { flex: none; padding-left: calc(var(--space-md) + 42px); }
+}
+
+/* ============================================================
    CONTACT SECTION
    ============================================================ */
 #contact {
@@ -2142,6 +2617,7 @@ body::before {
       <li><a href="#performance">성과</a></li>
       <li><a href="#references">레퍼런스</a></li>
       <li><a href="#digo">DIGO AI</a></li>
+      <li><a href="#spatial">3D 공간</a></li>
     </ul>
 
     <div class="nav-cta">
@@ -2165,6 +2641,7 @@ body::before {
     <li><a href="#performance" class="mobile-link">성과</a></li>
     <li><a href="#references" class="mobile-link">레퍼런스</a></li>
     <li><a href="#digo" class="mobile-link">DIGO AI</a></li>
+    <li><a href="#spatial" class="mobile-link">3D 공간</a></li>
   </ul>
   <div class="mobile-cta">
     <a href="#contact" class="btn btn-primary mobile-link" style="width:100%;justify-content:center;">무료 상담 신청 →</a>
@@ -2918,6 +3395,125 @@ body::before {
 </section>
 
 <!-- ============================================================
+     SPATIAL 3D — WORLD LABS ATLAS
+     ============================================================ -->
+<section id="spatial" class="section bg-base">
+  <div class="container">
+    <div class="spatial-head">
+      <div>
+        <span class="section-label fade-up">WORLD LABS ATLAS</span>
+        <h2 class="section-title fade-up delay-1">브랜드의 공간을,<br><em>직접 들어가 보는 경험</em>으로</h2>
+      </div>
+      <div class="fade-up delay-2">
+        <p class="section-desc">
+          매장과 팝업, 촬영 세트를 사진에서 3D 공간으로 복원합니다.
+          World Labs Atlas로 만든 공간을 웹에서 360°로 둘러보고,
+          같은 공간에서 광고 영상과 숏폼 소재까지 이어서 뽑아냅니다.
+        </p>
+        <div class="spatial-tags">
+          <span>Gaussian Splat .spz</span>
+          <span>Mesh .glb</span>
+          <span>Camera Walk .mp4</span>
+          <span>Web Embed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spatial-stage fade-up delay-1">
+      <div class="spatial-viewer" id="spatialViewer">
+        <div class="spatial-toolbar">
+          <div class="spatial-tabs" role="tablist" aria-label="3D 공간 선택">
+            <button type="button" class="spatial-tab active" role="tab" aria-selected="true" data-space="showroom">K-뷰티 쇼룸</button>
+            <button type="button" class="spatial-tab" role="tab" aria-selected="false" data-space="office">AI 퍼포먼스 오피스</button>
+          </div>
+          <div class="spatial-tools">
+            <button type="button" class="spatial-tool" data-cam="left" aria-label="좌측으로 회전" title="좌측으로 회전">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"></polyline><path d="M20 20v-7a4 4 0 0 0-4-4H4"></path></svg>
+            </button>
+            <button type="button" class="spatial-tool" data-cam="right" aria-label="우측으로 회전" title="우측으로 회전">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 14 20 9 15 4"></polyline><path d="M4 20v-7a4 4 0 0 1 4-4h12"></path></svg>
+            </button>
+            <button type="button" class="spatial-tool" data-cam="in" aria-label="확대" title="확대">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.2" y2="16.2"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </button>
+            <button type="button" class="spatial-tool" data-cam="out" aria-label="축소" title="축소">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.2" y2="16.2"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            </button>
+            <button type="button" class="spatial-tool is-active" data-cam="auto" aria-label="자동 회전" title="자동 회전">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3.5-7.1"></path><polyline points="21 4 21 10 15 10"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="spatial-canvas" id="spatialCanvas">
+          <canvas id="spatialGL"></canvas>
+
+          <div class="spatial-badge"><i></i>LIVE 3D · World Labs Atlas</div>
+
+          <div class="spatial-caption" id="spatialCaption">
+            <span class="spatial-caption-cat">SPACE 01 · K-BEAUTY SHOWROOM</span>
+            <h3>성수 쇼룸, 사진에서 시작된 공간</h3>
+            <p>매장을 촬영한 이미지로 복원한 인테리어. 진열과 조명, 동선을 그대로 옮겨 웹에서 걸어볼 수 있습니다.</p>
+          </div>
+
+          <div class="spatial-hint" id="spatialHint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6a2 2 0 1 1 4 0v5"></path><path d="M13 11V8a2 2 0 1 1 4 0v7a5 5 0 0 1-5 5H10a4 4 0 0 1-4-4v-3.5"></path></svg>
+            드래그로 360° 회전 · 스크롤로 확대
+          </div>
+
+          <div class="spatial-loader" id="spatialLoader"><span></span>공간을 렌더링하는 중…</div>
+
+          <div class="spatial-fallback">
+            <strong>3D 뷰어를 표시할 수 없습니다</strong>
+            <p>이 브라우저에서 WebGL을 사용할 수 없어 공간 이미지로 대체했습니다.</p>
+          </div>
+
+          <div class="spatial-embed" id="spatialEmbed" hidden></div>
+          <div class="spatial-poster" id="spatialPoster" hidden></div>
+        </div>
+      </div>
+
+      <div class="spatial-side">
+        <div class="spatial-card">
+          <div class="spatial-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.6"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+          </div>
+          <h4>사진 몇 장이면 충분합니다</h4>
+          <p>매장을 찍은 이미지를 올리면 Atlas가 공간 구조와 재질을 복원합니다. 모델링 툴 없이 시작합니다.</p>
+          <span class="spatial-card-meta">01 — Space Capture</span>
+        </div>
+
+        <div class="spatial-card">
+          <div class="spatial-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2"></rect></svg>
+          </div>
+          <h4>같은 공간, 카메라 워킹 영상</h4>
+          <p>복원한 공간 안에 카메라 경로를 설계해 5~10초 광고 영상으로 렌더합니다. 오픈 전 프리뷰로도 씁니다.</p>
+          <span class="spatial-card-meta">02 — Camera Walk</span>
+        </div>
+
+        <div class="spatial-card">
+          <div class="spatial-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><line x1="3" y1="12" x2="21" y2="12"></line><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"></path></svg>
+          </div>
+          <h4>사이트에 그대로 박제</h4>
+          <p>.spz·.glb·공유 URL을 이 뷰어에 연결하면 방문자가 직접 드래그해 둘러봅니다. 랜딩·상세·전시 페이지 어디든.</p>
+          <span class="spatial-card-meta">03 — Web Embed</span>
+        </div>
+
+        <div class="spatial-cta">
+          <div class="spatial-cta-text">
+            <strong>3D 공간 하나, 여기서 시작</strong>
+            촬영본이 있으면 바로 제작에 들어갑니다.
+          </div>
+          <a href="#contact" class="btn btn-primary">상담 신청 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      CONTACT
      ============================================================ -->
 <section id="contact" class="section bg-alt">
@@ -3359,6 +3955,993 @@ body::before {
 
 })();
 </script>
+
+<!-- ============================================================
+     SPATIAL 3D VIEWER — WORLD LABS ATLAS
+     ============================================================ -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.min.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+/* ============================================================
+   WAPLUS — 인터랙티브 3D 공간 뷰어 (World Labs Atlas 연동)
+   ------------------------------------------------------------
+   · 드래그 360° 회전 / 휠·핀치 줌 / 자동 회전 토글
+   · 두 개의 공간(K-뷰티 쇼룸, AI 퍼포먼스 오피스)을 WebGL로 실시간 렌더링
+   · Atlas 산출물은 아래 SPATIAL_ATLAS 슬롯에 URL만 넣으면 즉시 교체됩니다.
+       view      : { pos:[x,y,z], target:[x,y,z] } 공간별 카메라 고정(선택)
+       splatUrl  : Atlas Gaussian Splat (.spz / .ply)  — Spark 뷰어로 로드
+       glbUrl    : Atlas Splats-to-Mesh 결과 (.glb)    — GLTFLoader로 로드
+       embedUrl  : Atlas 공유/임베드 URL               — iframe으로 표시
+       posterUrl : 카메라 워킹 영상(.mp4) 또는 대표 이미지 — embed가 막힌 링크용
+       externalUrl: 공유 링크(새 창에서 열기). Marble 월드 페이지는 iframe이 차단되어
+                    posterUrl + externalUrl 조합을 쓴다.
+   ============================================================ */
+
+const SPATIAL_ATLAS = {
+  showroom: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, externalUrl: null, view: null },
+  office:   { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, externalUrl: null, view: null }
+};
+
+const SPATIAL_TEXT = {
+  showroom: {
+    cat: 'SPACE 01 · K-BEAUTY SHOWROOM',
+    title: '성수 쇼룸, 사진에서 시작된 공간',
+    desc: '매장을 촬영한 이미지로 복원한 인테리어. 진열과 조명, 동선을 그대로 옮겨 웹에서 걸어볼 수 있습니다.'
+  },
+  office: {
+    cat: 'SPACE 02 · AI PERFORMANCE OFFICE',
+    title: '퍼포먼스 팀의 데이터 룸',
+    desc: '캠페인 지표가 벽면 스크린에 흐르는 오피스. 브랜드 미팅에서 공간 소개 그대로 씁니다.'
+  }
+};
+
+(async function spatialViewer() {
+  'use strict';
+
+  const viewerEl = document.getElementById('spatialViewer');
+  if (!viewerEl) return;
+
+  const canvas = document.getElementById('spatialGL');
+  const loaderEl = document.getElementById('spatialLoader');
+  const hintEl = document.getElementById('spatialHint');
+  const captionEl = document.getElementById('spatialCaption');
+  const embedEl = document.getElementById('spatialEmbed');
+
+  const fail = () => {
+    viewerEl.classList.add('is-static');
+    if (loaderEl) loaderEl.classList.add('hide');
+  };
+
+  let THREE, OrbitControls, RoomEnvironment;
+  try {
+    THREE = await import('three');
+    ({ OrbitControls } = await import('three/addons/controls/OrbitControls.js'));
+    ({ RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js'));
+  } catch (err) {
+    console.warn('[spatial] three.js 로드 실패', err);
+    fail();
+    return;
+  }
+
+  /* ── Renderer ─────────────────────────────────────────── */
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+  } catch (err) {
+    console.warn('[spatial] WebGL 사용 불가', err);
+    fail();
+    return;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.12;
+  if ('outputColorSpace' in renderer) renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x05070e);
+  scene.fog = new THREE.FogExp2(0x05070e, 0.038);
+
+  const camera = new THREE.PerspectiveCamera(44, 1, 0.1, 120);
+  camera.position.set(4.4, 2.05, 6.7);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 1.5, -1.8);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.enablePan = false;
+  controls.rotateSpeed = 0.72;
+  controls.zoomSpeed = 0.75;
+  controls.minDistance = 3.2;
+  controls.maxDistance = 13.5;
+  controls.minPolarAngle = 0.55;
+  controls.maxPolarAngle = 1.48;
+  controls.autoRotateSpeed = 0.42;
+  controls.autoRotate = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  controls.update();
+
+  /* ── Environment (PBR 반사) ───────────────────────────── */
+  try {
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    const envRT = pmrem.fromScene(new RoomEnvironment(), 0.05);
+    scene.environment = envRT.texture;
+    pmrem.dispose();
+  } catch (err) {
+    console.warn('[spatial] 환경맵 생성 실패', err);
+  }
+
+  /* ── 공통 유틸 ────────────────────────────────────────── */
+  const FONT = "'Pretendard Variable', Pretendard, system-ui, -apple-system, 'Segoe UI', sans-serif";
+
+  function canvasTexture(w, h, draw) {
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d');
+    draw(ctx, w, h);
+    const tex = new THREE.CanvasTexture(cv);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+    return tex;
+  }
+
+  function glowTexture() {
+    return canvasTexture(256, 256, (ctx, w, h) => {
+      const g = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+      g.addColorStop(0, 'rgba(255,255,255,1)');
+      g.addColorStop(0.28, 'rgba(255,255,255,0.55)');
+      g.addColorStop(0.62, 'rgba(255,255,255,0.12)');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+    });
+  }
+  const GLOW = glowTexture();
+
+  function glow(color, size, opacity = 0.55) {
+    const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: GLOW,
+      color,
+      transparent: true,
+      opacity,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    }));
+    sprite.scale.set(size, size, 1);
+    return sprite;
+  }
+
+  function spacedText(ctx, text, x, y, spacing, color) {
+    ctx.fillStyle = color;
+    let cx = x;
+    for (const ch of text) {
+      ctx.fillText(ch, cx, y);
+      cx += ctx.measureText(ch).width + spacing;
+    }
+    return cx - spacing;
+  }
+
+  function particles(count, spread, yMin, yMax, colors) {
+    const pos = new Float32Array(count * 3);
+    const col = new Float32Array(count * 3);
+    const c = new THREE.Color();
+    for (let i = 0; i < count; i++) {
+      pos[i * 3] = (Math.random() - 0.5) * spread[0];
+      pos[i * 3 + 1] = yMin + Math.random() * (yMax - yMin);
+      pos[i * 3 + 2] = (Math.random() - 0.5) * spread[1];
+      c.set(colors[i % colors.length]);
+      col[i * 3] = c.r; col[i * 3 + 1] = c.g; col[i * 3 + 2] = c.b;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const mat = new THREE.PointsMaterial({
+      size: 0.035,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      map: GLOW
+    });
+    return new THREE.Points(geo, mat);
+  }
+
+  function floorLines(width, depth, step, color, opacity) {
+    const pts = [];
+    const halfW = width / 2;
+    const halfD = depth / 2;
+    for (let x = -halfW; x <= halfW + 0.001; x += step) {
+      pts.push(x, 0, -halfD, x, 0, halfD);
+    }
+    for (let z = -halfD; z <= halfD + 0.001; z += step) {
+      pts.push(-halfW, 0, z, halfW, 0, z);
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity });
+    return new THREE.LineSegments(geo, mat);
+  }
+
+  function box(w, h, d, mat) { return new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); }
+
+  /* ── K-뷰티 쇼룸 ──────────────────────────────────────── */
+  function buildShowroom() {
+    const g = new THREE.Group();
+    g.name = 'showroom';
+
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x0c101c, roughness: 0.94, metalness: 0.1, envMapIntensity: 0.4 });
+    const floorMat = new THREE.MeshStandardMaterial({ color: 0x0a0e18, roughness: 0.16, metalness: 0.92, envMapIntensity: 1.15 });
+    const podiumMat = new THREE.MeshStandardMaterial({ color: 0x141a2b, roughness: 0.28, metalness: 0.72 });
+    const metalMat = new THREE.MeshStandardMaterial({ color: 0xd8d2c4, roughness: 0.22, metalness: 1.0, envMapIntensity: 1.4 });
+
+    const ROOM_W = 14, ROOM_D = 17, ROOM_H = 4.6, BACK_Z = -9;
+
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D), floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.z = BACK_Z + ROOM_D / 2;
+    g.add(floor);
+
+    const grid = floorLines(ROOM_W - 0.8, ROOM_D - 0.8, 1, 0x3a2f7d, 0.62);
+    grid.position.set(0, 0.005, BACK_Z + ROOM_D / 2);
+    g.add(grid);
+
+    // 런웨이 — 로고까지 이어지는 밝은 바닥
+    const runwayTex = canvasTexture(64, 512, (ctx, w, h) => {
+      const grd = ctx.createLinearGradient(0, 0, 0, h);
+      grd.addColorStop(0, 'rgba(124,92,252,0.55)');
+      grd.addColorStop(0.45, 'rgba(90,80,200,0.20)');
+      grd.addColorStop(1, 'rgba(124,92,252,0)');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, w, h);
+    });
+    const runway = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.8, 15),
+      new THREE.MeshBasicMaterial({ map: runwayTex, transparent: true, opacity: 0.5, depthWrite: false, blending: THREE.AdditiveBlending })
+    );
+    runway.rotation.x = -Math.PI / 2;
+    runway.position.set(0, 0.012, BACK_Z + 8.4);
+    g.add(runway);
+
+    // 벽
+    const backWall = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_H), wallMat);
+    backWall.position.set(0, ROOM_H / 2, BACK_Z);
+    g.add(backWall);
+
+    const sideGeo = new THREE.PlaneGeometry(ROOM_D, ROOM_H);
+    [-1, 1].forEach(s => {
+      const wall = new THREE.Mesh(sideGeo, wallMat);
+      wall.position.set(s * ROOM_W / 2, ROOM_H / 2, BACK_Z + ROOM_D / 2);
+      wall.rotation.y = -s * Math.PI / 2;
+      g.add(wall);
+    });
+
+    const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D),
+      new THREE.MeshStandardMaterial({ color: 0x06080f, roughness: 1 }));
+    ceiling.rotation.x = Math.PI / 2;
+    ceiling.position.set(0, ROOM_H, BACK_Z + ROOM_D / 2);
+    g.add(ceiling);
+
+    // 월 로고
+    const logoTex = canvasTexture(2048, 512, (ctx, w, h) => {
+      ctx.clearRect(0, 0, w, h);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.font = `800 190px ${FONT}`;
+      const tw = ctx.measureText('WAPLUS').width + 34 * 5;
+      spacedText(ctx, 'WAPLUS', (w - tw) / 2, h * 0.45, 34, 'rgba(255,255,255,0.96)');
+      ctx.font = `600 46px ${FONT}`;
+      const sub = 'A I   P E R F O R M A N C E   A G E N C Y';
+      const sw = ctx.measureText(sub).width;
+      ctx.fillStyle = 'rgba(155,127,255,0.85)';
+      ctx.fillText(sub, (w - sw) / 2, h * 0.78);
+    });
+    const logo = new THREE.Mesh(
+      new THREE.PlaneGeometry(7.4, 1.85),
+      new THREE.MeshBasicMaterial({ map: logoTex, transparent: true, depthWrite: false })
+    );
+    logo.position.set(0, 3.45, BACK_Z + 0.06);
+    g.add(logo);
+
+    const logoGlow = glow(0x7c5cfc, 14, 0.6);
+    logoGlow.position.set(0, 3.45, BACK_Z + 0.4);
+    g.add(logoGlow);
+
+    const wallStrip = box(9.5, 0.035, 0.05, new THREE.MeshBasicMaterial({ color: 0x8a6bff }));
+    wallStrip.position.set(0, 2.2, BACK_Z + 0.09);
+    g.add(wallStrip);
+    const wallStripGlow = glow(0x7c5cfc, 7, 0.22);
+    wallStripGlow.position.set(0, 2.2, BACK_Z + 0.5);
+    wallStripGlow.scale.set(7, 1.2, 1);
+    g.add(wallStripGlow);
+
+    // 제품 진열
+    const pearl = new THREE.MeshStandardMaterial({ color: 0xf4f1ea, roughness: 0.3, metalness: 0.12, envMapIntensity: 1.1 });
+    const blush = new THREE.MeshStandardMaterial({ color: 0xe8c3c8, roughness: 0.34, metalness: 0.1 });
+    const deep = new THREE.MeshStandardMaterial({ color: 0x1d2233, roughness: 0.24, metalness: 0.5 });
+    const glass = new THREE.MeshStandardMaterial({ color: 0xdfe6ff, roughness: 0.08, metalness: 0.35, transparent: true, opacity: 0.55, envMapIntensity: 1.6 });
+
+    function bottle(mat, capMat, y0) {
+      const grp = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.185, 0.5, 10, 22), mat);
+      body.position.y = y0 + 0.44;
+      grp.add(body);
+      const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.09, 0.1, 18), capMat);
+      neck.position.y = y0 + 0.86;
+      grp.add(neck);
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.082, 0.082, 0.12, 18), metalMat);
+      cap.position.y = y0 + 0.95;
+      grp.add(cap);
+      const band = new THREE.Mesh(new THREE.CylinderGeometry(0.188, 0.188, 0.16, 22), glass);
+      band.position.y = y0 + 0.5;
+      grp.add(band);
+      return grp;
+    }
+
+    function tube(mat, y0) {
+      const grp = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.115, 0.14, 0.62, 20), mat);
+      body.position.y = y0 + 0.31;
+      grp.add(body);
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.08, 20), metalMat);
+      cap.position.y = y0 + 0.66;
+      grp.add(cap);
+      return grp;
+    }
+
+    function jar(mat, y0) {
+      const grp = new THREE.Group();
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.3, 0.17, 30), mat);
+      body.position.y = y0 + 0.085;
+      grp.add(body);
+      const lid = new THREE.Mesh(new THREE.CylinderGeometry(0.295, 0.295, 0.09, 30), metalMat);
+      lid.position.y = y0 + 0.215;
+      grp.add(lid);
+      return grp;
+    }
+
+    const podiums = [
+      { x: -3.5, z: -0.4, item: bottle(pearl, metalMat, 0), extra: jar(blush, 0) },
+      { x: 0, z: -1.9, item: tube(blush, 0), extra: bottle(pearl, metalMat, 0) },
+      { x: 3.5, z: -0.4, item: jar(deep, 0), extra: tube(pearl, 0) }
+    ];
+
+    podiums.forEach((p, i) => {
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 0.98, 0.8, 48), podiumMat);
+      base.position.set(p.x, 0.4, p.z);
+      g.add(base);
+
+      const top = new THREE.Mesh(new THREE.CylinderGeometry(0.96, 0.96, 0.02, 48), metalMat);
+      top.position.set(p.x, 0.81, p.z);
+      g.add(top);
+
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(0.88, 0.012, 8, 64),
+        new THREE.MeshBasicMaterial({ color: i === 1 ? 0x00d4ff : 0x8a6bff })
+      );
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(p.x, 0.825, p.z);
+      g.add(ring);
+
+      const halo = glow(i === 1 ? 0x00d4ff : 0x7c5cfc, 3.4, 0.22);
+      halo.position.set(p.x, 0.95, p.z);
+      g.add(halo);
+
+      p.item.scale.setScalar(1.45);
+      p.item.position.set(p.x, 0.82, p.z);
+      p.item.updateMatrixWorld(true);
+      p.item.position.y += 0.82 - new THREE.Box3().setFromObject(p.item).min.y;
+      g.add(p.item);
+
+      p.extra.scale.setScalar(1.0);
+      p.extra.position.set(p.x + (i === 2 ? -0.34 : 0.34), 0.82, p.z + 0.1);
+      p.extra.updateMatrixWorld(true);
+      p.extra.position.y += 0.82 - new THREE.Box3().setFromObject(p.extra).min.y;
+      g.add(p.extra);
+    });
+
+    // 벽면 선반
+    [-1, 1].forEach(s => {
+      const shelf = box(0.26, 3.0, 0.9, new THREE.MeshStandardMaterial({ color: 0x101526, roughness: 0.5, metalness: 0.4 }));
+      shelf.position.set(s * (ROOM_W / 2 - 0.2), 2.1, -4.6);
+      g.add(shelf);
+      for (let i = 0; i < 3; i++) {
+        const mini = box(0.16, 0.3, 0.16, i % 2 ? pearl : blush);
+        mini.position.set(s * (ROOM_W / 2 - 0.36), 1.15 + i * 0.55, -4.6);
+        g.add(mini);
+        const strip = glow(i % 2 ? 0x9b7fff : 0x00d4ff, 0.9, 0.3);
+        strip.position.set(s * (ROOM_W / 2 - 0.36), 1.15 + i * 0.55, -4.6);
+        g.add(strip);
+      }
+    });
+
+    // 천장 조명 트랙 (은은한 라인)
+    for (let i = 0; i < 2; i++) {
+      const track = box(2.6, 0.03, 0.09, new THREE.MeshBasicMaterial({ color: 0x6f7ba0 }));
+      track.position.set(i === 0 ? -2.2 : 2.2, ROOM_H - 0.12, -4.4);
+      g.add(track);
+      const tHalo = glow(0x9bb0ff, 3.2, 0.1);
+      tHalo.position.set(i === 0 ? -2.2 : 2.2, ROOM_H - 0.22, -4.4);
+      tHalo.scale.set(3.4, 0.9, 1);
+      g.add(tHalo);
+    }
+
+    // 받침대 라인 · 천장 서클 라이트
+    const baseStrip = box(13.2, 0.03, 0.03, new THREE.MeshBasicMaterial({ color: 0x3b2f7a }));
+    baseStrip.position.set(0, 0.05, BACK_Z + 0.12);
+    g.add(baseStrip);
+
+    // 측벽 수직 라이트 컬럼
+    [-1, 1].forEach(side => {
+      [-7.2, -4.6, -2.0, 0.6].forEach((cz, idx) => {
+        const col = box(0.05, 3.1, 0.05, new THREE.MeshBasicMaterial({ color: side < 0 ? 0x8a6bff : 0x59d6ee }));
+        col.position.set(side * (ROOM_W / 2 - 0.16), 1.65, cz);
+        g.add(col);
+        if (idx % 2 === 0) {
+          const cg = glow(side < 0 ? 0x7c5cfc : 0x00d4ff, 1.5, 0.2);
+          cg.position.set(side * (ROOM_W / 2 - 0.3), 1.65, cz);
+          cg.scale.set(1.2, 3.4, 1);
+          g.add(cg);
+        }
+      });
+    });
+
+    // 플로팅 브랜드 패널
+    function panel(title, lines, accent) {
+      const tex = canvasTexture(1024, 512, (ctx, w, h) => {
+        ctx.fillStyle = 'rgba(10,14,26,0.9)';
+        ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = accent;
+        ctx.lineWidth = 5;
+        ctx.strokeRect(4, 4, w - 8, h - 8);
+        ctx.fillStyle = accent;
+        ctx.font = `700 30px ${FONT}`;
+        ctx.fillText(title, 54, 96);
+        ctx.fillStyle = 'rgba(255,255,255,0.94)';
+        ctx.font = `700 62px ${FONT}`;
+        lines.forEach((line, i) => ctx.fillText(line, 54, 196 + i * 82));
+      });
+      return new THREE.Mesh(
+        new THREE.PlaneGeometry(2.95, 1.48),
+        new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity: 0.94 })
+      );
+    }
+
+    const panelA = panel('K-BEAUTY / SEOUL', ['24 PARTNER', 'BRANDS'], 'rgba(0,212,255,0.85)');
+    panelA.position.set(2.05, 2.5, -6.4);
+    panelA.rotation.y = -0.3;
+    g.add(panelA);
+    const panelAGlow = glow(0x00d4ff, 3.6, 0.18);
+    panelAGlow.position.copy(panelA.position);
+    g.add(panelAGlow);
+
+    const panelB = panel('SHOWROOM / 3D', ['PASSION', 'FAST · TRUST'], 'rgba(155,127,255,0.85)');
+    panelB.position.set(-3.95, 2.25, -4.9);
+    panelB.rotation.y = 0.42;
+    g.add(panelB);
+    const panelBGlow = glow(0x7c5cfc, 3.6, 0.18);
+    panelBGlow.position.copy(panelB.position);
+    g.add(panelBGlow);
+
+    // 조명
+    g.add(new THREE.AmbientLight(0x8fa4ff, 0.34));
+    const key = new THREE.DirectionalLight(0xffffff, 1.15);
+    key.position.set(5, 9, 5);
+    g.add(key);
+    const fill = new THREE.DirectionalLight(0x7c5cfc, 0.55);
+    fill.position.set(-6, 5, 2);
+    g.add(fill);
+
+    const p1 = new THREE.PointLight(0x7c5cfc, 26, 16, 2);
+    p1.position.set(-3.6, 3.0, 0.4);
+    g.add(p1);
+    const p2 = new THREE.PointLight(0x00d4ff, 20, 16, 2);
+    p2.position.set(3.6, 2.9, 0.6);
+    g.add(p2);
+    const p3 = new THREE.PointLight(0xffffff, 22, 18, 2);
+    p3.position.set(0, 4.6, -6.4);
+    g.add(p3);
+
+    g.add(particles(360, [12, 15], 0.3, 4.8, [0x9b7fff, 0x00d4ff, 0xffffff]));
+    return g;
+  }
+
+  /* ── AI 퍼포먼스 오피스 ───────────────────────────────── */
+  function buildOffice() {
+    const g = new THREE.Group();
+    g.name = 'office';
+
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x0b0f1b, roughness: 0.9, metalness: 0.15 });
+    const floorMat = new THREE.MeshStandardMaterial({ color: 0x090d17, roughness: 0.22, metalness: 0.85, envMapIntensity: 1.0 });
+    const deskMat = new THREE.MeshStandardMaterial({ color: 0x151a29, roughness: 0.42, metalness: 0.35 });
+    const chairMat = new THREE.MeshStandardMaterial({ color: 0x0f1421, roughness: 0.62, metalness: 0.2 });
+
+    const ROOM_W = 18, ROOM_D = 18, ROOM_H = 5.4, BACK_Z = -9;
+
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D), floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.z = BACK_Z + ROOM_D / 2;
+    g.add(floor);
+
+    const grid = floorLines(ROOM_W - 0.8, ROOM_D - 0.8, 1.5, 0x123a4a, 0.55);
+    grid.position.set(0, 0.005, BACK_Z + ROOM_D / 2);
+    g.add(grid);
+
+    const backWall = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_H), wallMat);
+    backWall.position.set(0, ROOM_H / 2, BACK_Z);
+    g.add(backWall);
+
+    const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D),
+      new THREE.MeshStandardMaterial({ color: 0x05070d, roughness: 1 }));
+    ceiling.rotation.x = Math.PI / 2;
+    ceiling.position.set(0, ROOM_H, BACK_Z + ROOM_D / 2);
+    g.add(ceiling);
+
+    // 대형 스크린
+    const screenTex = canvasTexture(1536, 640, (ctx, w, h) => {
+      ctx.fillStyle = '#060a14';
+      ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = 'rgba(0,212,255,0.55)';
+      ctx.lineWidth = 6;
+      ctx.strokeRect(3, 3, w - 6, h - 6);
+
+      ctx.fillStyle = 'rgba(0,212,255,0.85)';
+      ctx.font = `700 34px ${FONT}`;
+      ctx.fillText('DIGO™  LIVE PERFORMANCE', 56, 82);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.font = `800 72px ${FONT}`;
+      ctx.fillText('REAL-TIME DATA', 56, 176);
+
+      // 그래프
+      const bars = [0.28, 0.44, 0.36, 0.62, 0.55, 0.78, 0.7, 0.92];
+      const bw = 62, gap = 30, base = h - 74;
+      bars.forEach((v, i) => {
+        const x = 56 + i * (bw + gap);
+        const bh = v * 300;
+        const grd = ctx.createLinearGradient(0, base - bh, 0, base);
+        grd.addColorStop(0, 'rgba(0,245,160,0.95)');
+        grd.addColorStop(1, 'rgba(0,212,255,0.12)');
+        ctx.fillStyle = grd;
+        ctx.fillRect(x, base - bh, bw, bh);
+      });
+      ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(40, base);
+      ctx.lineTo(w - 40, base);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.font = `600 26px ${FONT}`;
+      ctx.fillText('CHANNEL · CREATIVE · BID  자동 최적화', 56, h - 24);
+    });
+
+    const screen = new THREE.Mesh(
+      new THREE.PlaneGeometry(7.6, 3.15),
+      new THREE.MeshBasicMaterial({ map: screenTex })
+    );
+    screen.position.set(0, 2.85, BACK_Z + 0.06);
+    g.add(screen);
+
+    const screenGlow = glow(0x00d4ff, 13, 0.26);
+    screenGlow.position.set(0, 2.8, BACK_Z + 0.5);
+    screenGlow.scale.set(10, 5, 1);
+    g.add(screenGlow);
+
+    const frame = box(7.9, 3.45, 0.1, new THREE.MeshStandardMaterial({ color: 0x121826, roughness: 0.4, metalness: 0.6 }));
+    frame.position.set(0, 2.85, BACK_Z - 0.02);
+    g.add(frame);
+
+    // 데스크
+    function monitor(i) {
+      const tex = canvasTexture(512, 320, (ctx, w, h) => {
+        ctx.fillStyle = '#05080f';
+        ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = i % 2 ? 'rgba(0,245,160,0.6)' : 'rgba(124,92,252,0.65)';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(2, 2, w - 4, h - 4);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.font = `700 22px ${FONT}`;
+        ctx.fillText(i % 2 ? 'CREATIVE B' : 'CAMPAIGN A', 22, 46);
+        const bars = i % 2 ? [0.3, 0.5, 0.4, 0.72, 0.6, 0.86] : [0.5, 0.38, 0.66, 0.52, 0.8, 0.68];
+        const bw = 44, gap = 22, base = h - 40;
+        bars.forEach((v, k) => {
+          const bh = v * 170;
+          const grd = ctx.createLinearGradient(0, base - bh, 0, base);
+          grd.addColorStop(0, i % 2 ? 'rgba(0,245,160,0.9)' : 'rgba(155,127,255,0.95)');
+          grd.addColorStop(1, 'rgba(0,212,255,0.1)');
+          ctx.fillStyle = grd;
+          ctx.fillRect(26 + k * (bw + gap), base - bh, bw, bh);
+        });
+      });
+      const m = new THREE.Mesh(
+        new THREE.PlaneGeometry(1.05, 0.65),
+        new THREE.MeshBasicMaterial({ map: tex })
+      );
+      m.position.set(0, 0.62, -0.32);
+      m.rotation.y = 0.02;
+      return m;
+    }
+
+    const deskSpots = [
+      [-3.4, 1.6], [3.4, 1.6], [-3.4, -1.9], [3.4, -1.9]
+    ];
+
+    deskSpots.forEach(([x, z], i) => {
+      const desk = new THREE.Group();
+      desk.position.set(x, 0, z);
+
+      const top = box(2.9, 0.07, 1.25, deskMat);
+      top.position.y = 0.74;
+      desk.add(top);
+
+      [[-1.35, -0.5], [1.35, -0.5], [-1.35, 0.5], [1.35, 0.5]].forEach(([lx, lz]) => {
+        const leg = box(0.06, 0.74, 0.06, deskMat);
+        leg.position.set(lx, 0.37, lz);
+        desk.add(leg);
+      });
+
+      const mon = monitor(i);
+      mon.position.y = 0.97;
+      desk.add(mon);
+      desk.add(new THREE.Mesh(new THREE.PlaneGeometry(1.1, 0.05), new THREE.MeshBasicMaterial({ color: i % 2 ? 0x00f5a0 : 0x9b7fff }))
+        .translateY(0.775).translateZ(0.1));
+
+      const kb = box(0.62, 0.02, 0.2, new THREE.MeshStandardMaterial({ color: 0x1b2134, roughness: 0.6 }));
+      kb.position.set(0, 0.79, 0.26);
+      desk.add(kb);
+
+      // 의자
+      const seat = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.3, 0.12, 24), chairMat);
+      seat.position.set(0, 0.46, 0.95);
+      desk.add(seat);
+      const back = box(0.62, 0.62, 0.1, chairMat);
+      back.position.set(0, 0.78, 1.26);
+      desk.add(back);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.4, 12), chairMat);
+      pole.position.set(0, 0.26, 0.95);
+      desk.add(pole);
+
+      g.add(desk);
+    });
+
+    // 라이트 스트립
+    [-1, 1].forEach(s => {
+      const strip = box(0.06, 0.06, 16, new THREE.MeshBasicMaterial({ color: s < 0 ? 0x7c5cfc : 0x00d4ff }));
+      strip.position.set(s * 6.4, 0.08, BACK_Z + 8.6);
+      g.add(strip);
+      const stripGlow = glow(s < 0 ? 0x7c5cfc : 0x00d4ff, 3.2, 0.16);
+      stripGlow.position.set(s * 6.4, 0.3, -1);
+      stripGlow.scale.set(3, 1.4, 9);
+      g.add(stripGlow);
+    });
+
+    // 펜던트
+    [-3.6, 0, 3.6].forEach((px, i) => {
+      const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.11, 20, 16),
+        new THREE.MeshBasicMaterial({ color: i === 1 ? 0x00f5a0 : 0xfff2d6 }));
+      bulb.position.set(px, 3.9, -2.2);
+      g.add(bulb);
+      const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 1.5, 6),
+        new THREE.MeshBasicMaterial({ color: 0x2a3350 }));
+      cord.position.set(px, 4.68, -2.2);
+      g.add(cord);
+      const halo = glow(i === 1 ? 0x00f5a0 : 0xffe4b0, 2.4, 0.3);
+      halo.position.copy(bulb.position);
+      g.add(halo);
+    });
+
+    g.add(new THREE.AmbientLight(0x9fb4ff, 0.3));
+    const key = new THREE.DirectionalLight(0xffffff, 0.95);
+    key.position.set(-4, 9, 6);
+    g.add(key);
+    const screenLight = new THREE.PointLight(0x00d4ff, 30, 20, 2);
+    screenLight.position.set(0, 2.6, BACK_Z + 1.6);
+    g.add(screenLight);
+    const warm = new THREE.PointLight(0xffe0b0, 14, 14, 2);
+    warm.position.set(0, 3.8, -2.2);
+    g.add(warm);
+
+    g.add(particles(280, [16, 16], 0.4, 4.9, [0x00d4ff, 0x00f5a0, 0x9b7fff]));
+    return g;
+  }
+
+  const groups = {
+    showroom: buildShowroom(),
+    office: buildOffice()
+  };
+  Object.entries(groups).forEach(([key, g]) => {
+    g.visible = key === 'showroom';
+    scene.add(g);
+  });
+
+  /* ── 공간 전환 · 카메라 ───────────────────────────────── */
+  const VIEWS = {
+    showroom: { pos: new THREE.Vector3(4.4, 2.05, 6.7), target: new THREE.Vector3(0, 1.5, -1.8) },
+    office: { pos: new THREE.Vector3(-6.9, 3.6, 7.4), target: new THREE.Vector3(0, 1.5, -1.8) }
+  };
+
+  let current = 'showroom';
+  let tween = null;
+
+  function flyTo(pos, target, dur = 1000) {
+    tween = {
+      fromPos: camera.position.clone(),
+      toPos: pos.clone(),
+      fromTarget: controls.target.clone(),
+      toTarget: target.clone(),
+      t: 0,
+      dur
+    };
+  }
+
+  const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  const tabs = Array.from(document.querySelectorAll('.spatial-tab'));
+
+  function setSpace(key, skipFly) {
+    if (!groups[key]) return;
+    const changed = key !== current;
+    current = key;
+    Object.entries(groups).forEach(([k, g]) => { g.visible = k === key; });
+    tabs.forEach(tab => {
+      const on = tab.dataset.space === key;
+      tab.classList.toggle('active', on);
+      tab.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    const override = SPATIAL_ATLAS[key] && SPATIAL_ATLAS[key].view;
+    const view = override && override.pos
+      ? { pos: new THREE.Vector3(...override.pos), target: new THREE.Vector3(...(override.target || [0, 1.2, 0])) }
+      : VIEWS[key];
+    if (!skipFly) flyTo(view.pos, view.target, 1150);
+
+    if (changed && captionEl) {
+      captionEl.classList.add('swap');
+      const text = SPATIAL_TEXT[key];
+      setTimeout(() => {
+        captionEl.querySelector('.spatial-caption-cat').textContent = text.cat;
+        captionEl.querySelector('h3').textContent = text.title;
+        captionEl.querySelector('p').textContent = text.desc;
+        captionEl.classList.remove('swap');
+      }, 220);
+    }
+    applyAtlas(key);
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => setSpace(tab.dataset.space)));
+
+  /* ── Atlas 에셋 연결 ──────────────────────────────────── */
+  let atlasLoaded = {};
+  let sparkRenderer = null;
+
+  /* Atlas 에셋의 실제 크기에 맞춰 카메라를 자동 프레이밍 */
+  function frameToBox(key, box, pad = 0.8) {
+    if (!box || box.isEmpty()) return;
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+    const radius = Math.max(size.x, size.y, size.z) || 1;
+    // 실내 스플랫 기준: 방 안쪽(중심에서 살짝 뒤)에 눈높이로 서서 중앙을 바라보게 잡는다
+    const dist = radius * 0.45 * pad + 1.0;
+    controls.minDistance = Math.max(0.05, radius * 0.05);
+    controls.maxDistance = Math.max(controls.maxDistance, radius * 2.5 + dist);
+    VIEWS[key] = {
+      pos: center.clone().add(new THREE.Vector3(0, size.y * 0.04, dist)),
+      target: center.clone().add(new THREE.Vector3(0, size.y * 0.02, -radius * 0.3))
+    };
+    if (key === current) flyTo(VIEWS[key].pos, VIEWS[key].target, 900);
+  }
+
+  async function applyAtlas(key) {
+    const cfg = SPATIAL_ATLAS[key];
+    if (!cfg) return;
+
+    if (cfg.embedUrl) {
+      if (!embedEl.firstChild) {
+        const iframe = document.createElement('iframe');
+        iframe.src = cfg.embedUrl;
+        iframe.loading = 'lazy';
+        iframe.allow = 'fullscreen; xr-spatial-tracking';
+        iframe.title = 'World Labs Atlas 3D 공간';
+        embedEl.appendChild(iframe);
+      }
+      embedEl.hidden = false;
+      return;
+    }
+    embedEl.hidden = true;
+
+    const posterEl = document.getElementById('spatialPoster');
+    if (posterEl) {
+      if (cfg.posterUrl) {
+        posterEl.style.backgroundImage = 'url("' + cfg.posterUrl + '")';
+        posterEl.innerHTML = '<span class="spatial-poster-label">Marble · 360° 세계</span>' +
+          (cfg.externalUrl
+            ? '<a class="spatial-poster-link" href="' + cfg.externalUrl + '" target="_blank" rel="noopener">3D로 직접 둘러보기 ↗</a>'
+            : '');
+        posterEl.hidden = false;
+        if (loaderEl) loaderEl.classList.add('hide');
+        return;
+      }
+      posterEl.hidden = true;
+    }
+
+    if (atlasLoaded[key]) return;
+
+    if (cfg.splatUrl) {
+      atlasLoaded[key] = 'loading';
+      try {
+        const spark = await import('https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.4.0/dist/spark.module.js');
+
+        if (!sparkRenderer) {
+          sparkRenderer = new spark.SparkRenderer({ renderer });
+          scene.add(sparkRenderer);
+          scene.fog = null; // 스플랫 원본 색을 그대로 보여주기 위해 안개 해제
+        }
+
+        const splat = new spark.SplatMesh({ url: cfg.splatUrl });
+        splat.name = 'atlas-splat-' + key;
+        // Marble/World Labs 기본 좌표계(OpenCV, +y down)를 OpenGL(+y up)로 보정
+        splat.scale.set(1, -1, -1);
+        scene.add(splat);
+        groups[key].visible = false;
+
+        splat.initialized.then(() => {
+          frameToBox(key, splat.getBoundingBox(true));
+          atlasLoaded[key] = 'splat';
+          if (loaderEl) loaderEl.classList.add('hide');
+        }).catch(err => {
+          console.warn('[spatial] Atlas splat 초기화 실패', err);
+          atlasLoaded[key] = null;
+        });
+      } catch (err) {
+        console.warn('[spatial] Atlas splat 로드 실패', err);
+        atlasLoaded[key] = null;
+      }
+      return;
+    }
+
+    if (cfg.glbUrl) {
+      try {
+        const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+        new GLTFLoader().load(cfg.glbUrl, gltf => {
+          const model = gltf.scene;
+          const bbox = new THREE.Box3().setFromObject(model);
+          const size = bbox.getSize(new THREE.Vector3());
+          const center = bbox.getCenter(new THREE.Vector3());
+          model.position.sub(center);
+          model.position.y += size.y / 2;
+          const scale = 6 / Math.max(size.x, size.y, size.z || 1);
+          model.scale.setScalar(scale);
+          scene.add(model);
+          groups[key].visible = false;
+          scene.fog = null;
+          frameToBox(key, new THREE.Box3().setFromObject(model), 1.05);
+          atlasLoaded[key] = 'glb';
+          if (loaderEl) loaderEl.classList.add('hide');
+        });
+      } catch (err) {
+        console.warn('[spatial] Atlas glb 로드 실패', err);
+      }
+    }
+  }
+
+  /* ── 카메라 컨트롤 버튼 ───────────────────────────────── */
+  const autoBtn = document.querySelector('.spatial-tool[data-cam="auto"]');
+
+  function syncAuto() {
+    if (!autoBtn) return;
+    autoBtn.classList.toggle('is-active', controls.autoRotate);
+  }
+
+  document.querySelectorAll('.spatial-tool').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cam = btn.dataset.cam;
+      const offset = camera.position.clone().sub(controls.target);
+      const spherical = new THREE.Spherical().setFromVector3(offset);
+
+      if (cam === 'left' || cam === 'right') {
+        spherical.theta += (cam === 'left' ? 1 : -1) * THREE.MathUtils.degToRad(32);
+        const next = new THREE.Vector3().setFromSpherical(spherical).add(controls.target);
+        flyTo(next, controls.target, 620);
+      } else if (cam === 'in' || cam === 'out') {
+        spherical.radius = THREE.MathUtils.clamp(
+          spherical.radius * (cam === 'in' ? 0.82 : 1.22),
+          controls.minDistance,
+          controls.maxDistance
+        );
+        const next = new THREE.Vector3().setFromSpherical(spherical).add(controls.target);
+        flyTo(next, controls.target, 620);
+      } else if (cam === 'auto') {
+        controls.autoRotate = !controls.autoRotate;
+        syncAuto();
+      }
+    });
+  });
+
+  let hinted = false;
+  controls.addEventListener('start', () => {
+    if (controls.autoRotate) {
+      controls.autoRotate = false;
+      syncAuto();
+    }
+    if (!hinted && hintEl) {
+      hinted = true;
+      setTimeout(() => hintEl.classList.add('hide'), 1200);
+    }
+  });
+
+  /* ── 렌더 루프 ────────────────────────────────────────── */
+  let visible = true;
+  let ready = false;
+  const clock = new THREE.Clock();
+
+  function resize() {
+    const rect = renderer.domElement.parentElement.getBoundingClientRect();
+    const w = Math.max(1, rect.width);
+    const h = Math.max(1, rect.height);
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(resize).observe(renderer.domElement.parentElement);
+  } else {
+    window.addEventListener('resize', resize);
+  }
+  resize();
+
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(entries => {
+      visible = entries.some(e => e.isIntersecting);
+    }, { threshold: 0.04 }).observe(viewerEl);
+  }
+
+  function tick() {
+    requestAnimationFrame(tick);
+    if (!visible || document.hidden) return;
+
+    const dt = Math.min(clock.getDelta(), 0.05);
+
+    if (tween) {
+      tween.t = Math.min(1, tween.t + (dt * 1000) / tween.dur);
+      const e = easeInOut(tween.t);
+      camera.position.lerpVectors(tween.fromPos, tween.toPos, e);
+      controls.target.lerpVectors(tween.fromTarget, tween.toTarget, e);
+      if (tween.t >= 1) tween = null;
+    }
+
+    controls.update();
+    renderer.render(scene, camera);
+
+    if (!ready) {
+      ready = true;
+      if (loaderEl) loaderEl.classList.add('hide');
+    }
+  }
+
+  tick();
+  applyAtlas('showroom');
+
+  /* 디버그 · 후속 연동용 핸들 */
+  window.WAPLUS_SPATIAL = {
+    atlas: SPATIAL_ATLAS,
+    setSpace,
+    applyAtlas,
+    controls,
+    camera,
+    renderer,
+    scene
+  };
+})();
+</script>
+
 
 </body>
 </html>
