@@ -2,7 +2,7 @@
 
 `index.html`의 `#spatial` 섹션은 three.js 기반 인터랙티브 3D 뷰어입니다.
 별도 빌드 없이 `index.html` 한 파일로 동작하며, three.js는 jsDelivr CDN에서
-importmap으로 불러옵니다(three 0.160.0).
+importmap으로 불러옵니다(three 0.180.0).
 
 ## 지금 상태
 
@@ -28,7 +28,7 @@ const SPATIAL_ATLAS = {
 };
 ```
 
-- `.spz`를 넣으면 `@sparkjsdev/spark`(CDN 2.4.0)를 그때만 동적으로 불러와 씬에 추가하고,
+- `.spz`를 넣으면 `@sparkjsdev/spark`(CDN 2.4.0, three 0.180 이상 필요)를 그때만 동적으로 불러와 씬에 추가하고,
   절차적으로 만든 공간은 숨깁니다. 콘솔에서 `WAPLUS_SPATIAL.applyAtlas('showroom')`로 즉시 재적용할 수 있습니다.
 - `.glb`는 원점·크기를 자동 정규화해 바닥에 맞춰 배치합니다.
 - `embedUrl`을 넣으면 캔버스 대신 iframe이 표시됩니다.
@@ -38,4 +38,4 @@ const SPATIAL_ATLAS = {
 
 - 카페24(`waplez.cafe24.com`)에는 `index.html`과 `hero_bg_final.mp4`만 올리면 됩니다.
   three.js는 CDN이라 추가 업로드가 필요 없습니다.
-- `three@0.160.0` CDN 경로는 `index.html` 상단 importmap에서 관리합니다.
+- `three@0.180.0` CDN 경로는 `index.html` 상단 importmap에서 관리합니다.
