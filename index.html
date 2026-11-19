@@ -4322,14 +4322,14 @@ const SPATIAL_TEXT = {
     g.add(baseStrip);
 
     const ringLight = new THREE.Mesh(
-      new THREE.TorusGeometry(2.6, 0.028, 8, 96),
-      new THREE.MeshBasicMaterial({ color: 0xdfe8ff })
+      new THREE.TorusGeometry(2.6, 0.022, 8, 96),
+      new THREE.MeshBasicMaterial({ color: 0x8c9ac4 })
     );
     ringLight.rotation.x = -Math.PI / 2;
     ringLight.position.set(0, ROOM_H - 0.5, -1.6);
     g.add(ringLight);
 
-    const ringGlow = glow(0x9bb0ff, 8, 0.14);
+    const ringGlow = glow(0x9bb0ff, 7, 0.08);
     ringGlow.position.set(0, ROOM_H - 0.55, -1.6);
     ringGlow.scale.set(8, 8, 1);
     g.add(ringGlow);
