@@ -4284,8 +4284,8 @@ const SPATIAL_TEXT = {
       p.item.position.y += 0.82 - new THREE.Box3().setFromObject(p.item).min.y;
       g.add(p.item);
 
-      p.extra.scale.setScalar(1.15);
-      p.extra.position.set(p.x + 0.42, 0.82, p.z + 0.12);
+      p.extra.scale.setScalar(1.0);
+      p.extra.position.set(p.x + (i === 2 ? -0.34 : 0.34), 0.82, p.z + 0.1);
       p.extra.updateMatrixWorld(true);
       p.extra.position.y += 0.82 - new THREE.Box3().setFromObject(p.extra).min.y;
       g.add(p.extra);
@@ -4359,8 +4359,8 @@ const SPATIAL_TEXT = {
     }
 
     const panelA = panel('K-BEAUTY / SEOUL', ['24 PARTNER', 'BRANDS'], 'rgba(0,212,255,0.85)');
-    panelA.position.set(3.3, 2.5, -5.4);
-    panelA.rotation.y = -0.42;
+    panelA.position.set(2.8, 2.45, -6.1);
+    panelA.rotation.y = -0.3;
     g.add(panelA);
     const panelAGlow = glow(0x00d4ff, 3.6, 0.18);
     panelAGlow.position.copy(panelA.position);
