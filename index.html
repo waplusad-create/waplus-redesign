@@ -2004,6 +2004,56 @@ body::before {
 .spatial-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 .spatial-embed[hidden] { display: none; }
 
+.spatial-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: #05070E center/cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+}
+
+.spatial-poster::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5,7,14,0) 40%, rgba(5,7,14,0.85) 100%);
+  pointer-events: none;
+}
+
+.spatial-poster-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+}
+
+.spatial-poster-link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(255,255,255,0.26);
+  background: rgba(8,11,20,0.55);
+  backdrop-filter: blur(10px);
+}
+
+.spatial-poster-link:hover { background: rgba(124,92,252,0.55); border-color: transparent; }
+.spatial-poster[hidden] { display: none; }
+
 /* ── Side panel ───────────────────────────────────────────── */
 .spatial-side {
   display: flex;
@@ -3419,6 +3469,7 @@ body::before {
           </div>
 
           <div class="spatial-embed" id="spatialEmbed" hidden></div>
+          <div class="spatial-poster" id="spatialPoster" hidden></div>
         </div>
       </div>
 
@@ -3928,12 +3979,14 @@ body::before {
        splatUrl  : Atlas Gaussian Splat (.spz / .ply)  — Spark 뷰어로 로드
        glbUrl    : Atlas Splats-to-Mesh 결과 (.glb)    — GLTFLoader로 로드
        embedUrl  : Atlas 공유/임베드 URL               — iframe으로 표시
-       posterUrl : 카메라 워킹 영상(.mp4) 또는 대표 이미지
+       posterUrl : 카메라 워킹 영상(.mp4) 또는 대표 이미지 — embed가 막힌 링크용
+       externalUrl: 공유 링크(새 창에서 열기). Marble 월드 페이지는 iframe이 차단되어
+                    posterUrl + externalUrl 조합을 쓴다.
    ============================================================ */
 
 const SPATIAL_ATLAS = {
-  showroom: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, view: null },
-  office:   { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, view: null }
+  showroom: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, externalUrl: null, view: null },
+  office:   { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, externalUrl: null, view: null }
 };
 
 const SPATIAL_TEXT = {
@@ -4702,6 +4755,21 @@ const SPATIAL_TEXT = {
       return;
     }
     embedEl.hidden = true;
+
+    const posterEl = document.getElementById('spatialPoster');
+    if (posterEl) {
+      if (cfg.posterUrl) {
+        posterEl.style.backgroundImage = 'url("' + cfg.posterUrl + '")';
+        posterEl.innerHTML = '<span class="spatial-poster-label">Marble · 360° 세계</span>' +
+          (cfg.externalUrl
+            ? '<a class="spatial-poster-link" href="' + cfg.externalUrl + '" target="_blank" rel="noopener">3D로 직접 둘러보기 ↗</a>'
+            : '');
+        posterEl.hidden = false;
+        if (loaderEl) loaderEl.classList.add('hide');
+        return;
+      }
+      posterEl.hidden = true;
+    }
 
     if (atlasLoaded[key]) return;
 
