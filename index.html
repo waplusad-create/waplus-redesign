@@ -4306,15 +4306,15 @@ const SPATIAL_TEXT = {
       }
     });
 
-    // 천장 조명 바
-    for (let i = 0; i < 3; i++) {
-      const bar = box(3.4, 0.05, 0.22, new THREE.MeshBasicMaterial({ color: 0xdfe8ff }));
-      bar.position.set(0, ROOM_H - 0.25, -5.2 + i * 4.2);
-      g.add(bar);
-      const halo = glow(0xcdd8ff, 5.5, 0.17);
-      halo.position.set(0, ROOM_H - 0.4, -5.2 + i * 4.2);
-      halo.scale.set(6, 1.4, 1);
-      g.add(halo);
+    // 천장 조명 트랙 (은은한 라인)
+    for (let i = 0; i < 2; i++) {
+      const track = box(2.6, 0.03, 0.09, new THREE.MeshBasicMaterial({ color: 0x6f7ba0 }));
+      track.position.set(i === 0 ? -2.2 : 2.2, ROOM_H - 0.12, -4.4);
+      g.add(track);
+      const tHalo = glow(0x9bb0ff, 3.2, 0.1);
+      tHalo.position.set(i === 0 ? -2.2 : 2.2, ROOM_H - 0.22, -4.4);
+      tHalo.scale.set(3.4, 0.9, 1);
+      g.add(tHalo);
     }
 
     // 받침대 라인 · 천장 서클 라이트
@@ -4359,7 +4359,7 @@ const SPATIAL_TEXT = {
     }
 
     const panelA = panel('K-BEAUTY / SEOUL', ['24 PARTNER', 'BRANDS'], 'rgba(0,212,255,0.85)');
-    panelA.position.set(3.95, 2.45, -4.6);
+    panelA.position.set(3.3, 2.5, -5.4);
     panelA.rotation.y = -0.42;
     g.add(panelA);
     const panelAGlow = glow(0x00d4ff, 3.6, 0.18);
