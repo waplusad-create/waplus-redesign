@@ -4662,6 +4662,23 @@ const SPATIAL_TEXT = {
 
   /* ── Atlas 에셋 연결 ──────────────────────────────────── */
   let atlasLoaded = {};
+  let sparkRenderer = null;
+
+  /* Atlas 에셋의 실제 크기에 맞춰 카메라를 자동 프레이밍 */
+  function frameToBox(key, box, pad = 0.8) {
+    if (!box || box.isEmpty()) return;
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+    const radius = Math.max(size.x, size.y, size.z) || 1;
+    const dist = radius * pad + 1.2;
+    controls.minDistance = Math.max(0.05, radius * 0.08);
+    controls.maxDistance = Math.max(controls.maxDistance, dist * 3);
+    VIEWS[key] = {
+      pos: center.clone().add(new THREE.Vector3(size.x * 0.1, size.y * 0.08 + radius * 0.18, dist)),
+      target: center.clone()
+    };
+    if (key === current) flyTo(VIEWS[key].pos, VIEWS[key].target, 900);
+  }
 
   async function applyAtlas(key) {
     const cfg = SPATIAL_ATLAS[key];
@@ -4684,18 +4701,32 @@ const SPATIAL_TEXT = {
     if (atlasLoaded[key]) return;
 
     if (cfg.splatUrl) {
+      atlasLoaded[key] = 'loading';
       try {
         const spark = await import('https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.4.0/dist/spark.module.js');
-        const sparkRenderer = new spark.SparkRenderer({ renderer });
-        scene.add(sparkRenderer);
+
+        if (!sparkRenderer) {
+          sparkRenderer = new spark.SparkRenderer({ renderer });
+          scene.add(sparkRenderer);
+          scene.fog = null; // 스플랫 원본 색을 그대로 보여주기 위해 안개 해제
+        }
+
         const splat = new spark.SplatMesh({ url: cfg.splatUrl });
         splat.name = 'atlas-splat-' + key;
         scene.add(splat);
         groups[key].visible = false;
-        atlasLoaded[key] = 'splat';
-        if (loaderEl) loaderEl.classList.add('hide');
+
+        splat.initialized.then(() => {
+          frameToBox(key, splat.getBoundingBox(true));
+          atlasLoaded[key] = 'splat';
+          if (loaderEl) loaderEl.classList.add('hide');
+        }).catch(err => {
+          console.warn('[spatial] Atlas splat 초기화 실패', err);
+          atlasLoaded[key] = null;
+        });
       } catch (err) {
         console.warn('[spatial] Atlas splat 로드 실패', err);
+        atlasLoaded[key] = null;
       }
       return;
     }
@@ -4714,6 +4745,8 @@ const SPATIAL_TEXT = {
           model.scale.setScalar(scale);
           scene.add(model);
           groups[key].visible = false;
+          scene.fog = null;
+          frameToBox(key, new THREE.Box3().setFromObject(model), 1.05);
           atlasLoaded[key] = 'glb';
           if (loaderEl) loaderEl.classList.add('hide');
         });
