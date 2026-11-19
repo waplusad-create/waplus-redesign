@@ -1712,10 +1712,11 @@ body::before {
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   gap: var(--space-xl);
-  align-items: end;
+  align-items: start;
   margin-bottom: var(--space-xl);
 }
 
+.spatial-head > div:last-child { padding-top: 4px; }
 .spatial-head .section-title { margin-bottom: 0; }
 .spatial-head .section-desc { max-width: none; }
 
@@ -3986,7 +3987,7 @@ const SPATIAL_TEXT = {
   }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
+  renderer.toneMappingExposure = 1.12;
   if ('outputColorSpace' in renderer) renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
@@ -4120,7 +4121,7 @@ const SPATIAL_TEXT = {
     const g = new THREE.Group();
     g.name = 'showroom';
 
-    const wallMat = new THREE.MeshStandardMaterial({ color: 0x0c101c, roughness: 0.92, metalness: 0.12 });
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x0c101c, roughness: 0.94, metalness: 0.1, envMapIntensity: 0.4 });
     const floorMat = new THREE.MeshStandardMaterial({ color: 0x0a0e18, roughness: 0.16, metalness: 0.92, envMapIntensity: 1.15 });
     const podiumMat = new THREE.MeshStandardMaterial({ color: 0x141a2b, roughness: 0.28, metalness: 0.72 });
     const metalMat = new THREE.MeshStandardMaterial({ color: 0xd8d2c4, roughness: 0.22, metalness: 1.0, envMapIntensity: 1.4 });
@@ -4321,18 +4322,20 @@ const SPATIAL_TEXT = {
     baseStrip.position.set(0, 0.05, BACK_Z + 0.12);
     g.add(baseStrip);
 
-    const ringLight = new THREE.Mesh(
-      new THREE.TorusGeometry(2.6, 0.022, 8, 96),
-      new THREE.MeshBasicMaterial({ color: 0x8c9ac4 })
-    );
-    ringLight.rotation.x = -Math.PI / 2;
-    ringLight.position.set(0, ROOM_H - 0.5, -1.6);
-    g.add(ringLight);
-
-    const ringGlow = glow(0x9bb0ff, 7, 0.08);
-    ringGlow.position.set(0, ROOM_H - 0.55, -1.6);
-    ringGlow.scale.set(8, 8, 1);
-    g.add(ringGlow);
+    // 측벽 수직 라이트 컬럼
+    [-1, 1].forEach(side => {
+      [-7.2, -4.6, -2.0, 0.6].forEach((cz, idx) => {
+        const col = box(0.05, 3.1, 0.05, new THREE.MeshBasicMaterial({ color: side < 0 ? 0x8a6bff : 0x59d6ee }));
+        col.position.set(side * (ROOM_W / 2 - 0.16), 1.65, cz);
+        g.add(col);
+        if (idx % 2 === 0) {
+          const cg = glow(side < 0 ? 0x7c5cfc : 0x00d4ff, 1.5, 0.2);
+          cg.position.set(side * (ROOM_W / 2 - 0.3), 1.65, cz);
+          cg.scale.set(1.2, 3.4, 1);
+          g.add(cg);
+        }
+      });
+    });
 
     // 플로팅 브랜드 패널
     function panel(title, lines, accent) {
