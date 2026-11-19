@@ -3994,10 +3994,10 @@ const SPATIAL_TEXT = {
   scene.fog = new THREE.FogExp2(0x05070e, 0.038);
 
   const camera = new THREE.PerspectiveCamera(44, 1, 0.1, 120);
-  camera.position.set(5.5, 2.45, 8.4);
+  camera.position.set(4.4, 2.05, 6.7);
 
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 1.45, -1.2);
+  controls.target.set(0, 1.5, -1.8);
   controls.enableDamping = true;
   controls.dampingFactor = 0.06;
   controls.enablePan = false;
@@ -4125,7 +4125,7 @@ const SPATIAL_TEXT = {
     const podiumMat = new THREE.MeshStandardMaterial({ color: 0x141a2b, roughness: 0.28, metalness: 0.72 });
     const metalMat = new THREE.MeshStandardMaterial({ color: 0xd8d2c4, roughness: 0.22, metalness: 1.0, envMapIntensity: 1.4 });
 
-    const ROOM_W = 14, ROOM_D = 17, ROOM_H = 5.2, BACK_Z = -9;
+    const ROOM_W = 14, ROOM_D = 17, ROOM_H = 4.6, BACK_Z = -9;
 
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D), floorMat);
     floor.rotation.x = -Math.PI / 2;
@@ -4193,7 +4193,7 @@ const SPATIAL_TEXT = {
     logo.position.set(0, 3.45, BACK_Z + 0.06);
     g.add(logo);
 
-    const logoGlow = glow(0x7c5cfc, 13, 0.46);
+    const logoGlow = glow(0x7c5cfc, 14, 0.6);
     logoGlow.position.set(0, 3.45, BACK_Z + 0.4);
     g.add(logoGlow);
 
@@ -4279,10 +4279,14 @@ const SPATIAL_TEXT = {
 
       p.item.scale.setScalar(1.45);
       p.item.position.set(p.x, 0.82, p.z);
+      p.item.updateMatrixWorld(true);
+      p.item.position.y += 0.82 - new THREE.Box3().setFromObject(p.item).min.y;
       g.add(p.item);
 
       p.extra.scale.setScalar(1.15);
       p.extra.position.set(p.x + 0.42, 0.82, p.z + 0.12);
+      p.extra.updateMatrixWorld(true);
+      p.extra.position.y += 0.82 - new THREE.Box3().setFromObject(p.extra).min.y;
       g.add(p.extra);
     });
 
@@ -4303,10 +4307,10 @@ const SPATIAL_TEXT = {
 
     // 천장 조명 바
     for (let i = 0; i < 3; i++) {
-      const bar = box(3.4, 0.05, 0.22, new THREE.MeshBasicMaterial({ color: 0xffffff }));
+      const bar = box(3.4, 0.05, 0.22, new THREE.MeshBasicMaterial({ color: 0xdfe8ff }));
       bar.position.set(0, ROOM_H - 0.25, -5.2 + i * 4.2);
       g.add(bar);
-      const halo = glow(0xcdd8ff, 5.5, 0.3);
+      const halo = glow(0xcdd8ff, 5.5, 0.17);
       halo.position.set(0, ROOM_H - 0.4, -5.2 + i * 4.2);
       halo.scale.set(6, 1.4, 1);
       g.add(halo);
@@ -4352,7 +4356,7 @@ const SPATIAL_TEXT = {
     }
 
     const panelA = panel('K-BEAUTY / SEOUL', ['24 PARTNER', 'BRANDS'], 'rgba(0,212,255,0.85)');
-    panelA.position.set(4.55, 2.6, -3.9);
+    panelA.position.set(3.95, 2.45, -4.6);
     panelA.rotation.y = -0.42;
     g.add(panelA);
     const panelAGlow = glow(0x00d4ff, 3.6, 0.18);
@@ -4360,7 +4364,7 @@ const SPATIAL_TEXT = {
     g.add(panelAGlow);
 
     const panelB = panel('SHOWROOM / 3D', ['PASSION', 'FAST · TRUST'], 'rgba(155,127,255,0.85)');
-    panelB.position.set(-4.55, 2.35, -4.3);
+    panelB.position.set(-3.95, 2.25, -4.9);
     panelB.rotation.y = 0.42;
     g.add(panelB);
     const panelBGlow = glow(0x7c5cfc, 3.6, 0.18);
@@ -4602,7 +4606,7 @@ const SPATIAL_TEXT = {
 
   /* ── 공간 전환 · 카메라 ───────────────────────────────── */
   const VIEWS = {
-    showroom: { pos: new THREE.Vector3(5.5, 2.45, 8.4), target: new THREE.Vector3(0, 1.45, -1.2) },
+    showroom: { pos: new THREE.Vector3(4.4, 2.05, 6.7), target: new THREE.Vector3(0, 1.5, -1.8) },
     office: { pos: new THREE.Vector3(-6.9, 3.6, 7.4), target: new THREE.Vector3(0, 1.5, -1.8) }
   };
 
