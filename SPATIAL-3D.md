@@ -22,7 +22,8 @@ const SPATIAL_ATLAS = {
     splatUrl: 'https://.../showroom.spz',  // Atlas Gaussian Splat (.spz / .ply) → Spark 렌더러
     glbUrl: null,                          // Atlas Splats-to-Mesh 결과 (.glb) → GLTFLoader
     embedUrl: null,                        // Atlas 공유/임베드 URL → iframe으로 표시
-    posterUrl: null                        // 카메라 워킹 mp4 또는 대표 이미지
+    posterUrl: null,                       // 카메라 워킹 mp4 또는 대표 이미지
+    view: null                             // { pos:[x,y,z], target:[x,y,z] } 카메라 고정(선택)
   },
   office: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null }
 };

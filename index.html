@@ -3924,6 +3924,7 @@ body::before {
    · 드래그 360° 회전 / 휠·핀치 줌 / 자동 회전 토글
    · 두 개의 공간(K-뷰티 쇼룸, AI 퍼포먼스 오피스)을 WebGL로 실시간 렌더링
    · Atlas 산출물은 아래 SPATIAL_ATLAS 슬롯에 URL만 넣으면 즉시 교체됩니다.
+       view      : { pos:[x,y,z], target:[x,y,z] } 공간별 카메라 고정(선택)
        splatUrl  : Atlas Gaussian Splat (.spz / .ply)  — Spark 뷰어로 로드
        glbUrl    : Atlas Splats-to-Mesh 결과 (.glb)    — GLTFLoader로 로드
        embedUrl  : Atlas 공유/임베드 URL               — iframe으로 표시
@@ -3931,8 +3932,8 @@ body::before {
    ============================================================ */
 
 const SPATIAL_ATLAS = {
-  showroom: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null },
-  office:   { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null }
+  showroom: { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, view: null },
+  office:   { splatUrl: null, glbUrl: null, embedUrl: null, posterUrl: null, view: null }
 };
 
 const SPATIAL_TEXT = {
@@ -4642,7 +4643,10 @@ const SPATIAL_TEXT = {
       tab.setAttribute('aria-selected', on ? 'true' : 'false');
     });
 
-    const view = VIEWS[key];
+    const override = SPATIAL_ATLAS[key] && SPATIAL_ATLAS[key].view;
+    const view = override && override.pos
+      ? { pos: new THREE.Vector3(...override.pos), target: new THREE.Vector3(...(override.target || [0, 1.2, 0])) }
+      : VIEWS[key];
     if (!skipFly) flyTo(view.pos, view.target, 1150);
 
     if (changed && captionEl) {
