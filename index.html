@@ -4670,12 +4670,13 @@ const SPATIAL_TEXT = {
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
     const radius = Math.max(size.x, size.y, size.z) || 1;
-    const dist = radius * pad + 1.2;
-    controls.minDistance = Math.max(0.05, radius * 0.08);
-    controls.maxDistance = Math.max(controls.maxDistance, dist * 3);
+    // 실내 스플랫 기준: 방 안쪽(중심에서 살짝 뒤)에 눈높이로 서서 중앙을 바라보게 잡는다
+    const dist = radius * 0.35 * pad + 0.8;
+    controls.minDistance = Math.max(0.05, radius * 0.05);
+    controls.maxDistance = Math.max(controls.maxDistance, radius * 2.5 + dist);
     VIEWS[key] = {
-      pos: center.clone().add(new THREE.Vector3(size.x * 0.1, size.y * 0.08 + radius * 0.18, dist)),
-      target: center.clone()
+      pos: center.clone().add(new THREE.Vector3(0, size.y * 0.04, dist)),
+      target: center.clone().add(new THREE.Vector3(0, size.y * 0.02, -radius * 0.3))
     };
     if (key === current) flyTo(VIEWS[key].pos, VIEWS[key].target, 900);
   }
