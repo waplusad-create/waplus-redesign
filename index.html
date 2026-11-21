@@ -6,6 +6,14 @@
 <meta name="description" content="와플러스 - K-뷰티 특화 AI 퍼포먼스 에이전시. 10년+ 디지털 퍼포먼스 경험과 AI 마케팅 자동화 플랫폼 DIGO™로 분명한 성과를 만듭니다.">
 <title>WAPLUS | AI Performance Digital Agency</title>
 
+<!-- OpenGraph (값은 waplus.co.kr 실제 사이트 정보 기준) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="와플러스">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="WAPLUS | AI Performance Digital Agency">
+<meta property="og:description" content="와플러스 - K-뷰티 특화 AI 퍼포먼스 에이전시. 10년+ 디지털 퍼포먼스 경험과 AI 마케팅 자동화 플랫폼 DIGO™로 분명한 성과를 만듭니다.">
+<meta property="og:url" content="https://waplus.co.kr/">
+
 <!-- Pretendard Font -->
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
@@ -1769,7 +1777,10 @@ body::before {
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--c-text-1);
+  text-decoration: none;
 }
+
+a.contact-item-value:hover { color: var(--c-primary-2); }
 
 /* Contact Form */
 .contact-form {
@@ -1931,6 +1942,20 @@ body::before {
   padding-top: var(--space-lg);
   border-top: 1px solid var(--c-border);
 }
+
+.footer-company {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--c-text-4);
+  padding-top: var(--space-lg);
+}
+
+.footer-company a {
+  color: var(--c-text-3);
+  text-decoration: none;
+}
+
+.footer-company a:hover { color: var(--c-text-2); }
 
 .footer-copy {
   font-size: 0.8125rem;
@@ -2179,7 +2204,7 @@ body::before {
     <!-- AI 데이터 스트림 배경 영상 -->
     <div class="hero-video-bg">
       <video autoplay muted loop playsinline preload="auto" id="heroBgVideo">
-        <source src="https://waplusad-create.github.io/waplus-redesign/hero_bg_final.mp4" type="video/mp4">
+        <source src="hero_bg_final.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero-video-overlay"></div>
@@ -2939,7 +2964,7 @@ body::before {
             </div>
             <div>
               <div class="contact-item-label">전화 상담</div>
-              <div class="contact-item-value">02-000-0000</div>
+              <a href="tel:07041611493" class="contact-item-value">070-4161-1493</a>
             </div>
           </div>
           <div class="contact-item">
@@ -2948,7 +2973,7 @@ body::before {
             </div>
             <div>
               <div class="contact-item-label">이메일</div>
-              <div class="contact-item-value">contact@waplus.co.kr</div>
+              <a href="mailto:waplus@waplus.co.kr" class="contact-item-value">waplus@waplus.co.kr</a>
             </div>
           </div>
           <div class="contact-item">
@@ -2957,7 +2982,7 @@ body::before {
             </div>
             <div>
               <div class="contact-item-label">주소</div>
-              <div class="contact-item-value">서울특별시 강남구</div>
+              <div class="contact-item-value">서울특별시 금천구 가산디지털1로 145 3층 306호</div>
             </div>
           </div>
         </div>
@@ -3021,6 +3046,7 @@ body::before {
         <p class="footer-brand-desc">
           K-뷰티 특화 AI 퍼포먼스 에이전시. 10년+ 디지털 퍼포먼스 경험과 AI 마케팅 자동화 플랫폼 DIGO™로 분명한 성과를 만듭니다.
         </p>
+        <!-- 공식 SNS 채널 URL 미확인(waplus.co.kr에서 공식 계정 링크를 찾지 못함) — 실제 URL 확인 후 연결 필요 -->
         <div class="footer-social">
           <a href="#" class="footer-social-link" aria-label="인스타그램">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -3067,10 +3093,15 @@ body::before {
       </div>
     </div>
 
+    <div class="footer-company">
+      주식회사 와플러스 · 대표 손재형 · 서울특별시 금천구 가산디지털1로 145 3층 306호 · Tel. <a href="tel:07041611493">070-4161-1493</a>
+    </div>
+
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 주식회사 와플러스. All rights reserved.</div>
+      <div class="footer-copy">© 2026 주식회사 와플러스. All rights reserved.</div>
       <div class="footer-legal">
-        <a href="#">개인정보처리방침</a>
+        <a href="https://waplus.co.kr/member/privacy.html" target="_blank" rel="noopener">개인정보처리방침</a>
+        <!-- 이용약관: waplus.co.kr에 별도 약관 페이지가 없어(실사이트도 # 링크) 연결 URL 미확인 -->
         <a href="#">이용약관</a>
       </div>
     </div>
